@@ -7,15 +7,26 @@ type Props = {
   items: ContentItem[];
 };
 
+const tabs = [
+  { label: "Все", value: "all" },
+  { label: "Фильмы", value: "movies" },
+  { label: "Игры", value: "games" },
+];
+
 export function ContentSearch({ items }: Props) {
   const [search, setSearch] = useState("");
+  const [selectedTab, setSelectedTab] = useState("all");
 
   const filteredItems = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    if (!query) return items;
-
     return items.filter((item) => {
+      const matchesTab =
+        selectedTab === "all" ||
+        (selectedTab === "movies" &&
+          ["Фильм", "Мультфильм", "Аниме"].includes(item.type)) ||
+        (selectedTab === "games" && item.type === "Игра");
+
       const text = [
         item.title,
         item.type,
@@ -26,18 +37,41 @@ export function ContentSearch({ items }: Props) {
         .join(" ")
         .toLowerCase();
 
-      return text.includes(query);
+      const matchesSearch = !query || text.includes(query);
+
+      return matchesTab && matchesSearch;
     });
-  }, [items, search]);
+  }, [items, search, selectedTab]);
 
   return (
     <>
+    <div className="mt-8 flex gap-3">
+    {tabs.map((tab) => (
+        <button
+        key={tab.value}
+        type="button"
+        onClick={() => setSelectedTab(tab.value)}
+        className={`rounded-xl px-5 py-3 text-base font-medium transition ${
+            selectedTab === tab.value
+            ? "bg-white text-zinc-950"
+            : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"
+        }`}
+        >
+        {tab.label}
+        </button>
+    ))}
+    </div>
+
       <input
         type="text"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
-        placeholder="Введите название фильма или мультфильма..."
-        className="mt-8 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 outline-none focus:border-zinc-400"
+        placeholder={
+          selectedTab === "games"
+            ? "Введите название игры..."
+            : "Введите название фильма или мультфильма..."
+        }
+        className="mt-6 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 outline-none focus:border-zinc-400"
       />
 
       <div className="mt-4 text-sm text-zinc-500">
@@ -48,7 +82,7 @@ export function ContentSearch({ items }: Props) {
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="rounded-xl border border-zinc-800 bg-zinc-900 p-4"
+            className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 transition hover:border-zinc-700"
           >
             <div className="flex items-start justify-between gap-4">
               <div>

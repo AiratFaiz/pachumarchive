@@ -41,6 +41,14 @@ function parseTags(tags: string | undefined): string[] {
     .filter(Boolean);
 }
 
+function getDateTime(value: string): number {
+  if (!value) return 0;
+
+  const time = new Date(value).getTime();
+
+  return Number.isNaN(time) ? 0 : time;
+}
+
 export async function getContentItems(): Promise<ContentItem[]> {
   const rows = await readCsvRows();
 
@@ -56,5 +64,10 @@ export async function getContentItems(): Promise<ContentItem[]> {
       youtubeUrl: row.youtube_url ?? "",
       telegramUrl: row.telegram_url ?? "",
       boostyUrl: row.boosty_url ?? "",
-    }));
+    }))
+    .sort(
+      (a, b) =>
+        getDateTime(b.firstDate) -
+        getDateTime(a.firstDate)
+    );
 }

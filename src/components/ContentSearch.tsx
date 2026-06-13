@@ -9,8 +9,16 @@ type Props = {
 
 const tabs = [
   { label: "Все", value: "all" },
-  { label: "Фильмы", value: "movies" },
-  { label: "Игры", value: "games" },
+  { label: "Игры", value: "game" },
+  { label: "Фильмы", value: "movie" },
+  { label: "Сериалы", value: "series" },
+  { label: "Аниме", value: "anime" },
+  { label: "Баттлрэп", value: "battle_rap" },
+  { label: "Дегрод", value: "degrod" },
+  { label: "Музыка", value: "music" },
+  { label: "ИРЛ", value: "irl" },
+  { label: "Видео", value: "videos" },
+  { label: "Невошедшее", value: "unknown" },
 ];
 
 export function ContentSearch({ items }: Props) {
@@ -22,16 +30,13 @@ export function ContentSearch({ items }: Props) {
 
     return items.filter((item) => {
       const matchesTab =
-        selectedTab === "all" ||
-        (selectedTab === "movies" &&
-          ["Фильм", "Мультфильм", "Аниме"].includes(item.type)) ||
-        (selectedTab === "games" && item.type === "Игра");
+        selectedTab === "all" || item.contentType === selectedTab;
 
       const text = [
         item.title,
-        item.type,
+        item.contentType,
         item.rating,
-        item.watchDate,
+        item.firstDate,
         item.tags.join(" "),
       ]
         .join(" ")
@@ -45,31 +50,31 @@ export function ContentSearch({ items }: Props) {
 
   return (
     <>
-    <div className="mt-8 flex gap-3">
-    {tabs.map((tab) => (
-        <button
-        key={tab.value}
-        type="button"
-        onClick={() => setSelectedTab(tab.value)}
-        className={`rounded-xl px-5 py-3 text-base font-medium transition ${
-            selectedTab === tab.value
-            ? "bg-white text-zinc-950"
-            : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"
-        }`}
-        >
-        {tab.label}
-        </button>
-    ))}
-    </div>
+      <div className="mt-8 flex flex-wrap gap-3">
+        {tabs.map((tab) => (
+          <button
+            key={tab.value}
+            type="button"
+            onClick={() => setSelectedTab(tab.value)}
+            className={`rounded-xl px-5 py-3 text-base font-medium transition ${
+              selectedTab === tab.value
+                ? "bg-white text-zinc-950"
+                : "bg-zinc-900 text-zinc-300 hover:bg-zinc-800"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
       <input
         type="text"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
         placeholder={
-          selectedTab === "games"
+          selectedTab === "game"
             ? "Введите название игры..."
-            : "Введите название фильма или мультфильма..."
+            : "Введите название контента..."
         }
         className="mt-6 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-3 outline-none focus:border-zinc-400"
       />
@@ -89,8 +94,10 @@ export function ContentSearch({ items }: Props) {
                 <h2 className="text-xl font-semibold">{item.title}</h2>
 
                 <div className="mt-2 flex flex-wrap gap-2 text-sm text-zinc-400">
-                  {item.type && <span>{item.type}</span>}
-                  {item.watchDate && <span>• {item.watchDate}</span>}
+                  {item.contentType && (
+                    <span className="font-medium">{item.contentType}</span>
+                  )}
+                  {item.firstDate && <span>• {item.firstDate}</span>}
                 </div>
               </div>
 
@@ -113,6 +120,38 @@ export function ContentSearch({ items }: Props) {
                 ))}
               </div>
             )}
+
+            <div className="mt-4 flex gap-4 text-sm">
+              {item.youtubeUrl && (
+                <a
+                  href={item.youtubeUrl}
+                  target="_blank"
+                  className="text-red-400 hover:text-red-300"
+                >
+                  YouTube
+                </a>
+              )}
+
+              {item.telegramUrl && (
+                <a
+                  href={item.telegramUrl}
+                  target="_blank"
+                  className="text-sky-400 hover:text-sky-300"
+                >
+                  Telegram
+                </a>
+              )}
+
+              {item.boostyUrl && (
+                <a
+                  href={item.boostyUrl}
+                  target="_blank"
+                  className="text-orange-400 hover:text-orange-300"
+                >
+                  Boosty
+                </a>
+              )}
+            </div>
           </div>
         ))}
 

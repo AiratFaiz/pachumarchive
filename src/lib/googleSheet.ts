@@ -3,13 +3,19 @@ import Papa from "papaparse";
 export type ContentItem = {
   id: string;
   title: string;
-  type: string;
+  contentType: string;
   rating: string;
-  watchDate: string;
+
+  firstDate: string;
+
   tags: string[];
+
+  youtubeUrl: string;
+  telegramUrl: string;
+  boostyUrl: string;
 };
 
-const CONTENT_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0GC26EJ6Al2nfaGktZypwlGlFdamK8hI-xaZgaonCWtE9BlDCO7YwXWXOv7TcSw9acM38ca9a8O1U/pub?gid=0&single=true&output=csv";
+const CONTENT_CSV_URL = "/data/content_items.csv";
 
 async function fetchCsvRows(url: string): Promise<Record<string, string>[]> {
   const response = await fetch(url, {
@@ -38,14 +44,25 @@ function parseTags(tags: string | undefined): string[] {
 export async function getContentItems(): Promise<ContentItem[]> {
   const rows = await fetchCsvRows(CONTENT_CSV_URL);
 
-  return rows
-    .filter((row) => row.id && row.title)
-    .map((row) => ({
-      id: row.id ?? "",
-      title: row.title ?? "",
-      type: row.type ?? "",
-      rating: row.rating ?? "",
-      watchDate: row.watch_date ?? "",
-      tags: parseTags(row.tags),
-    }));
+return rows
+  .filter((row) => row.content_id && row.canonical_title)
+  .map((row) => ({
+    id: row.content_id ?? "",
+
+    title: row.canonical_title ?? "",
+
+    contentType: row.content_type ?? "",
+
+    rating: row.rating ?? "",
+
+    firstDate: row.first_date ?? "",
+
+    tags: parseTags(row.content_tags),
+
+    youtubeUrl: row.youtube_url ?? "",
+
+    telegramUrl: row.telegram_url ?? "",
+
+    boostyUrl: row.boosty_url ?? "",
+  }));
 }

@@ -10,7 +10,8 @@ export default async function Home() {
         <h1 className="text-5xl font-bold tracking-tight">Архив Пачуки</h1>
 
         <p className="mt-4 text-lg text-zinc-400">
-          Проверьте, смотрел ли Руслан этот фильм, мультфильм или игру.
+          Архив просмотренного и пройденного контента Пачуки.
+          Фильмы, сериалы, аниме, игры, баттлрэп, музыка и многое другое.
         </p>
 
         <ContentSearch items={items} />

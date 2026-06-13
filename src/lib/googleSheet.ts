@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+import path from "path";
 import Papa from "papaparse";
 
 export type ContentItem = {
@@ -5,24 +7,22 @@ export type ContentItem = {
   title: string;
   contentType: string;
   rating: string;
-
   firstDate: string;
-
   tags: string[];
-
   youtubeUrl: string;
   telegramUrl: string;
   boostyUrl: string;
 };
 
-const CONTENT_CSV_URL = "/data/content_items.csv";
+const CONTENT_CSV_PATH = path.join(
+  process.cwd(),
+  "public",
+  "data",
+  "content_items.csv"
+);
 
-async function fetchCsvRows(url: string): Promise<Record<string, string>[]> {
-  const response = await fetch(url, {
-    next: { revalidate: 60 },
-  });
-
-  const csvText = await response.text();
+async function readCsvRows(): Promise<Record<string, string>[]> {
+  const csvText = await fs.readFile(CONTENT_CSV_PATH, "utf-8");
 
   const parsed = Papa.parse<Record<string, string>>(csvText, {
     header: true,
@@ -42,27 +42,19 @@ function parseTags(tags: string | undefined): string[] {
 }
 
 export async function getContentItems(): Promise<ContentItem[]> {
-  const rows = await fetchCsvRows(CONTENT_CSV_URL);
+  const rows = await readCsvRows();
 
-return rows
-  .filter((row) => row.content_id && row.canonical_title)
-  .map((row) => ({
-    id: row.content_id ?? "",
-
-    title: row.canonical_title ?? "",
-
-    contentType: row.content_type ?? "",
-
-    rating: row.rating ?? "",
-
-    firstDate: row.first_date ?? "",
-
-    tags: parseTags(row.content_tags),
-
-    youtubeUrl: row.youtube_url ?? "",
-
-    telegramUrl: row.telegram_url ?? "",
-
-    boostyUrl: row.boosty_url ?? "",
-  }));
+  return rows
+    .filter((row) => row.content_id && row.canonical_title)
+    .map((row) => ({
+      id: row.content_id ?? "",
+      title: row.canonical_title ?? "",
+      contentType: row.content_type ?? "",
+      rating: row.rating ?? "",
+      firstDate: row.first_date ?? "",
+      tags: parseTags(row.content_tags),
+      youtubeUrl: row.youtube_url ?? "",
+      telegramUrl: row.telegram_url ?? "",
+      boostyUrl: row.boosty_url ?? "",
+    }));
 }

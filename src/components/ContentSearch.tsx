@@ -116,6 +116,23 @@ const tagLabels: Record<string, string> = {
   death_note: "Тетрадь смерти"
 };
 
+const contentTypeLabels: Record<string, string> = {
+  game: "Игра",
+  movie: "Фильм",
+  series: "Сериал",
+  anime: "Аниме",
+  battle_rap: "Баттлрэп",
+  degrod: "Дегрод",
+  music: "Музыка",
+  irl: "ИРЛ",
+  videos: "Видео",
+  unknown: "Невошедшее",
+};
+
+function getContentTypeLabel(type: string): string {
+  return contentTypeLabels[type] ?? type;
+}
+
 function getTagLabel(tag: string): string {
   return tagLabels[tag] ?? tag;
 }
@@ -276,7 +293,9 @@ export function ContentSearch({ items }: Props) {
 
                 <div className="mt-2 flex flex-wrap gap-2 text-sm text-zinc-400">
                   {item.contentType && (
-                    <span className="font-medium">{item.contentType}</span>
+                    <span className="font-medium">
+                      {getContentTypeLabel(item.contentType)}
+                    </span>
                   )}
                   {item.firstDate && <span>• {formatDate(item.firstDate)}</span>}
                 </div>

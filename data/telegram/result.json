@@ -1,0 +1,241 @@
+{
+ "name": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+ "type": "public_channel",
+ "id": 2447843635,
+ "messages": [
+  {
+   "id": 3842,
+   "type": "message",
+   "date": "2026-06-13T16:48:01",
+   "date_unixtime": "1781354881",
+   "edited": "2026-06-13T16:48:46",
+   "edited_unixtime": "1781354926",
+   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+   "from_id": "channel2447843635",
+   "photo": "(File not included. Change data exporting settings to download.)",
+   "photo_file_size": 71290,
+   "width": 896,
+   "height": 504,
+   "text": [
+    "Зима близко (S8 E3-6)\n\n",
+    {
+     "type": "custom_emoji",
+     "text": "📹",
+     "document_id": "stickers/sticker.webp"
+    },
+    " ",
+    {
+     "type": "text_link",
+     "text": "ТВИЧ",
+     "href": "https://www.twitch.tv/guz3lka"
+    },
+    " | ",
+    {
+     "type": "custom_emoji",
+     "text": "💳",
+     "document_id": "stickers/sticker (1).webp"
+    },
+    " ",
+    {
+     "type": "text_link",
+     "text": "БУСТИ",
+     "href": "https://boosty.to/guzelka_games"
+    },
+    " | ",
+    {
+     "type": "custom_emoji",
+     "text": "💬",
+     "document_id": "stickers/sticker (2).webp"
+    },
+    " ",
+    {
+     "type": "text_link",
+     "text": "ТЕЛЕГА",
+     "href": "http://t.me/papapachuca"
+    },
+    "\n\n",
+    {
+     "type": "hashtag",
+     "text": "#КиноСтрим"
+    },
+    " ",
+    {
+     "type": "hashtag",
+     "text": "#ЗимаБлизко"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Зима близко (S8 E3-6)\n\n"
+    },
+    {
+     "type": "custom_emoji",
+     "text": "📹",
+     "document_id": "stickers/sticker.webp"
+    },
+    {
+     "type": "plain",
+     "text": " "
+    },
+    {
+     "type": "text_link",
+     "text": "ТВИЧ",
+     "href": "https://www.twitch.tv/guz3lka"
+    },
+    {
+     "type": "plain",
+     "text": " | "
+    },
+    {
+     "type": "custom_emoji",
+     "text": "💳",
+     "document_id": "stickers/sticker (1).webp"
+    },
+    {
+     "type": "plain",
+     "text": " "
+    },
+    {
+     "type": "text_link",
+     "text": "БУСТИ",
+     "href": "https://boosty.to/guzelka_games"
+    },
+    {
+     "type": "plain",
+     "text": " | "
+    },
+    {
+     "type": "custom_emoji",
+     "text": "💬",
+     "document_id": "stickers/sticker (2).webp"
+    },
+    {
+     "type": "plain",
+     "text": " "
+    },
+    {
+     "type": "text_link",
+     "text": "ТЕЛЕГА",
+     "href": "http://t.me/papapachuca"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#КиноСтрим"
+    },
+    {
+     "type": "plain",
+     "text": " "
+    },
+    {
+     "type": "hashtag",
+     "text": "#ЗимаБлизко"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 26,
+      "emoji": "🔥"
+     }
+    ]
+  },
+  {
+   "id": 3843,
+   "type": "message",
+   "date": "2026-06-13T16:48:01",
+   "date_unixtime": "1781354881",
+   "edited": "2026-06-13T16:48:04",
+   "edited_unixtime": "1781354884",
+   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+   "from_id": "channel2447843635",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "1.mp4",
+   "file_size": 1694362176,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 10454,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 5735,
+   "width": 1280,
+   "height": 720,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 3844,
+   "type": "message",
+   "date": "2026-06-13T16:48:01",
+   "date_unixtime": "1781354881",
+   "edited": "2026-06-13T16:48:04",
+   "edited_unixtime": "1781354884",
+   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+   "from_id": "channel2447843635",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "2.mp4",
+   "file_size": 2229432551,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 7650,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 5189,
+   "width": 1280,
+   "height": 720,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 3845,
+   "type": "message",
+   "date": "2026-06-13T16:48:01",
+   "date_unixtime": "1781354881",
+   "edited": "2026-06-13T16:48:04",
+   "edited_unixtime": "1781354884",
+   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+   "from_id": "channel2447843635",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "3.mp4",
+   "file_size": 2601269901,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 11491,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 5022,
+   "width": 1280,
+   "height": 720,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 3846,
+   "type": "message",
+   "date": "2026-06-13T16:48:01",
+   "date_unixtime": "1781354881",
+   "edited": "2026-06-13T16:48:04",
+   "edited_unixtime": "1781354884",
+   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
+   "from_id": "channel2447843635",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "4.mp4",
+   "file_size": 2273807261,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 6988,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 5573,
+   "width": 1280,
+   "height": 720,
+   "text": "",
+   "text_entities": []
+  }
+ ]
+}

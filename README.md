@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pachuca Archive
 
-## Getting Started
+Архив контента Пачуки с поиском, фильтрацией и ссылками на оригинальные записи.
 
-First, run the development server:
+Сайт собирает данные из нескольких источников:
+
+* YouTube (PAPAPACHUCA, GUZ3LKA)
+* Telegram (перезаливы)
+* Boosty
+
+Каждая запись представляет собой отдельную единицу контента (стрим, реакцию, прохождение, фильм и т.д.).
+
+---
+
+## Технологии
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Vercel
+
+---
+
+## Структура данных
+
+Основная таблица:
+
+```text
+public/data/content_items.csv
+```
+
+Основные поля:
+
+* content_id
+* canonical_title
+* content_type
+* content_tags
+* first_date
+* youtube_url
+* telegram_url
+* boosty_url
+
+---
+
+## Автоматизация
+
+Новые записи сначала попадают в черновики:
+
+```text
+data/content_drafts.csv
+```
+
+После проверки импортируются в основную таблицу.
+
+Схема:
+
+```text
+YouTube
+Boosty
+Telegram
+        ↓
+content_drafts.csv
+        ↓
+ручная модерация
+        ↓
+content_items.csv
+        ↓
+сайт
+```
+
+---
+
+## Обновление данных
+
+### YouTube + Boosty
+
+Собрать новые записи:
+
+```bash
+python scripts/collect_new_content.py
+```
+
+### Telegram
+
+Экспортировать канал в:
+
+```text
+data/telegram/result.json
+```
+
+После чего выполнить:
+
+```bash
+python scripts/collect_telegram_drafts.py
+```
+
+### Импорт записей
+
+После проверки изменить:
+
+```text
+status = approved
+```
+
+и выполнить:
+
+```bash
+python scripts/apply_drafts.py
+```
+
+---
+
+## Локальный запуск
+
+Установка зависимостей:
+
+```bash
+npm install
+```
+
+Запуск:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Планы
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* объединение одинакового контента между площадками;
+* карточки контента;
+* улучшенные фильтры;
+* автоматизация модерации;
+* улучшение тегирования и классификации.

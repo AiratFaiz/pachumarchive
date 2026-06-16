@@ -28,7 +28,7 @@ export const tagLabels: Record<string, string> = {
     chsv: "ЧСВ",
     drago: "Драго",
     pacanki: "Пацанки",
-    br_main: "Батл-рэп Главное",
+    br_main: "Баттл-рэп Главное",
     triplet: "Триплет",
     tlou: "Одни из нас",
     exile: "Эксайл",

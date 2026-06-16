@@ -506,9 +506,9 @@ export function CardsView({ cards }: Props) {
           label="фильмов"
           icon="/icons/movie.svg"
           style={{
-            borderColor: "rgba(168, 85, 247, 0.42)",
+            borderColor: "rgba(29, 78, 216, 0.42)",
             background:
-              "linear-gradient(135deg, rgba(88, 28, 135, 0.30), rgba(24, 24, 27, 0.70))",
+              "linear-gradient(135deg, rgba(29, 78, 216, 0.22), rgba(24, 24, 27, 0.70))",
           }}
         />
 
@@ -517,9 +517,9 @@ export function CardsView({ cards }: Props) {
           label="сериалов"
           icon="/icons/series.svg"
           style={{
-            borderColor: "rgba(37, 99, 235, 0.42)",
+            borderColor: "rgba(124, 58, 237, 0.42)",
             background:
-              "linear-gradient(135deg, rgba(30, 64, 175, 0.26), rgba(24, 24, 27, 0.70))",
+              "linear-gradient(135deg, rgba(124, 58, 237, 0.22), rgba(24, 24, 27, 0.70))",
           }}
         />
 
@@ -530,7 +530,7 @@ export function CardsView({ cards }: Props) {
           style={{
             borderColor: "rgba(21, 128, 61, 0.42)",
             background:
-              "linear-gradient(135deg, rgba(20, 83, 45, 0.30), rgba(24, 24, 27, 0.70))",
+              "linear-gradient(135deg, rgba(21, 128, 61, 0.22), rgba(24, 24, 27, 0.70))",
           }}
         />
 
@@ -539,9 +539,9 @@ export function CardsView({ cards }: Props) {
           label="аниме"
           icon="/icons/anime.svg"
           style={{
-            borderColor: "rgba(236, 72, 153, 0.42)",
+            borderColor: "rgba(219, 39, 119, 0.42)",
             background:
-              "linear-gradient(135deg, rgba(157, 23, 77, 0.30), rgba(24, 24, 27, 0.70))",
+              "linear-gradient(135deg, rgba(219, 39, 119, 0.22), rgba(24, 24, 27, 0.70))",
           }}
         />
       </div>

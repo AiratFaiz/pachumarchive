@@ -112,7 +112,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 111,ИРЛ,irl,irl,,,1
 112,Властелин колец: Братство Кольца (2001),movie,"lotr,movie",10,telegram,1
 113,Хоббит,movie,"lotr,movie",,,1
-114,Гарри Поттер,movie,"hp,movie",,,1
+114,Гарри Поттер и философский камень (2001),movie,"hp,movie",,,1
 115,Законопослушный гражданин (2009),movie,"movie,lac",7.5,boosty,1
 116,Кошмар на улице Вязов (1984),movie,"movie,anoes",6,boosty,1
 117,"Д/ф ""Я Ведаю, так что и вам придётся""",movie,"movie,vedau",-,,1
@@ -415,3 +415,10 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 414,"Властелин колец: Братва и кольцо (Гоблин, 2001)",movie,"lotr,movie",2,boosty,1
 415,"Властелин колец: Две сорванные башни (Гоблин, 2002)",movie,"lotr,movie",2.5,boosty,1
 416,"Властелин колец: Возвращение бомжа (Гоблин, 2004)",movie,"lotr,movie",3,boosty,1
+417,Гарри Поттер и Дары Смерти: Часть I (2010),movie,"hp,movie",,,1
+418,Гарри Поттер и Дары Смерти: Часть II (2011),movie,"hp,movie",,,1
+419,Гарри Поттер и Орден Феникса (2007),movie,"hp,movie",,,1
+420,Гарри Поттер и Принц-полукровка (2009),movie,"hp,movie",,,1
+421,Гарри Поттер и Тайная комната (2002),movie,"hp,movie",,,1
+422,Гарри Поттер и Узник Азкабана (2004),movie,"hp,movie",,,1
+423,Гарри Поттер и Кубок огня (2005),,,,,

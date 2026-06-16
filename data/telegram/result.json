@@ -4,24 +4,35 @@
  "id": 2447843635,
  "messages": [
   {
-   "id": 3847,
+   "id": 3851,
    "type": "message",
-   "date": "2026-06-14T16:07:01",
-   "date_unixtime": "1781438821",
-   "edited": "2026-06-14T16:07:57",
-   "edited_unixtime": "1781438877",
+   "date": "2026-06-16T16:14:01",
+   "date_unixtime": "1781612041",
+   "edited": "2026-06-16T17:10:07",
+   "edited_unixtime": "1781615407",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "photo": "(File not included. Change data exporting settings to download.)",
-   "photo_file_size": 122248,
-   "width": 1221,
-   "height": 681,
+   "photo_file_size": 134846,
+   "width": 1280,
+   "height": 720,
    "text": [
-    "Сверхъестественное (S15 E15-20)\n\n",
+    "Пила 6 (2009)\n",
+    {
+     "type": "custom_emoji",
+     "text": "🤪",
+     "document_id": "stickers/sticker.webp"
+    },
+    " - ",
+    {
+     "type": "spoiler",
+     "text": "7/10"
+    },
+    "\n\n",
     {
      "type": "custom_emoji",
      "text": "📹",
-     "document_id": "stickers/sticker.webp"
+     "document_id": "stickers/sticker (1).webp"
     },
     " ",
     {
@@ -33,7 +44,7 @@
     {
      "type": "custom_emoji",
      "text": "💳",
-     "document_id": "stickers/sticker (1).webp"
+     "document_id": "stickers/sticker (2).webp"
     },
     " ",
     {
@@ -45,7 +56,7 @@
     {
      "type": "custom_emoji",
      "text": "💬",
-     "document_id": "stickers/sticker (2).webp"
+     "document_id": "stickers/sticker (3).webp"
     },
     " ",
     {
@@ -58,22 +69,34 @@
      "type": "hashtag",
      "text": "#КиноСтрим"
     },
-    " ",
-    {
-     "type": "hashtag",
-     "text": "#Сверхи"
-    },
     ""
    ],
    "text_entities": [
     {
      "type": "plain",
-     "text": "Сверхъестественное (S15 E15-20)\n\n"
+     "text": "Пила 6 (2009)\n"
+    },
+    {
+     "type": "custom_emoji",
+     "text": "🤪",
+     "document_id": "stickers/sticker.webp"
+    },
+    {
+     "type": "plain",
+     "text": " - "
+    },
+    {
+     "type": "spoiler",
+     "text": "7/10"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
     },
     {
      "type": "custom_emoji",
      "text": "📹",
-     "document_id": "stickers/sticker.webp"
+     "document_id": "stickers/sticker (1).webp"
     },
     {
      "type": "plain",
@@ -91,7 +114,7 @@
     {
      "type": "custom_emoji",
      "text": "💳",
-     "document_id": "stickers/sticker (1).webp"
+     "document_id": "stickers/sticker (2).webp"
     },
     {
      "type": "plain",
@@ -109,7 +132,7 @@
     {
      "type": "custom_emoji",
      "text": "💬",
-     "document_id": "stickers/sticker (2).webp"
+     "document_id": "stickers/sticker (3).webp"
     },
     {
      "type": "plain",
@@ -130,86 +153,56 @@
     },
     {
      "type": "plain",
-     "text": " "
-    },
-    {
-     "type": "hashtag",
-     "text": "#Сверхи"
-    },
-    {
-     "type": "plain",
      "text": ""
     }
    ],
    "reactions": [
      {
       "type": "emoji",
-      "count": 16,
+      "count": 2,
       "emoji": "🔥"
      }
     ]
   },
   {
-   "id": 3848,
+   "id": 3852,
    "type": "message",
-   "date": "2026-06-14T16:07:01",
-   "date_unixtime": "1781438821",
-   "edited": "2026-06-14T16:07:04",
-   "edited_unixtime": "1781438824",
+   "date": "2026-06-16T16:14:01",
+   "date_unixtime": "1781612041",
+   "edited": "2026-06-16T16:14:04",
+   "edited_unixtime": "1781612044",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "file": "(File not included. Change data exporting settings to download.)",
-   "file_name": "11.mp4",
-   "file_size": 1550821709,
+   "file_name": "111.mp4",
+   "file_size": 1557771988,
    "thumbnail": "(File not included. Change data exporting settings to download.)",
-   "thumbnail_file_size": 7984,
+   "thumbnail_file_size": 12166,
    "media_type": "video_file",
    "mime_type": "video/mp4",
-   "duration_seconds": 5707,
+   "duration_seconds": 3038,
    "width": 1280,
    "height": 720,
    "text": "",
    "text_entities": []
   },
   {
-   "id": 3849,
+   "id": 3853,
    "type": "message",
-   "date": "2026-06-14T16:07:01",
-   "date_unixtime": "1781438821",
-   "edited": "2026-06-14T16:07:04",
-   "edited_unixtime": "1781438824",
+   "date": "2026-06-16T16:14:01",
+   "date_unixtime": "1781612041",
+   "edited": "2026-06-16T16:14:04",
+   "edited_unixtime": "1781612044",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "file": "(File not included. Change data exporting settings to download.)",
-   "file_name": "22.mp4",
-   "file_size": 1547759289,
+   "file_name": "222.mp4",
+   "file_size": 1464986271,
    "thumbnail": "(File not included. Change data exporting settings to download.)",
-   "thumbnail_file_size": 8910,
+   "thumbnail_file_size": 10369,
    "media_type": "video_file",
    "mime_type": "video/mp4",
-   "duration_seconds": 5380,
-   "width": 1280,
-   "height": 720,
-   "text": "",
-   "text_entities": []
-  },
-  {
-   "id": 3850,
-   "type": "message",
-   "date": "2026-06-14T16:07:01",
-   "date_unixtime": "1781438821",
-   "edited": "2026-06-14T16:07:04",
-   "edited_unixtime": "1781438824",
-   "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
-   "from_id": "channel2447843635",
-   "file": "(File not included. Change data exporting settings to download.)",
-   "file_name": "33.mp4",
-   "file_size": 2373872957,
-   "thumbnail": "(File not included. Change data exporting settings to download.)",
-   "thumbnail_file_size": 4985,
-   "media_type": "video_file",
-   "mime_type": "video/mp4",
-   "duration_seconds": 6866,
+   "duration_seconds": 2751,
    "width": 1280,
    "height": 720,
    "text": "",

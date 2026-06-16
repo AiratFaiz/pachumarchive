@@ -197,6 +197,7 @@ export const tagLabels: Record<string, string> = {
     helldivers: "Helldivers 2",
     cooking: "Кукинг",
     silicon: "Силиконовая долина",
+    saw6: "Пила 6",
 };
 
 export function getTagLabel(tag: string): string {

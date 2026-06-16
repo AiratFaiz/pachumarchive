@@ -192,6 +192,11 @@ export const tagLabels: Record<string, string> = {
     sherlok: "Шерлок Холмс",
     shapito: "Шапито-шоу: Любовь и дружба",
     chudo: "Чудо в камере №7",
+    jigokuraku: "Райский ад",
+    zom100: "Предсмертный список зомби",
+    helldivers: "Helldivers 2",
+    cooking: "Кукинг",
+    silicon: "Силиконовая долина",
 };
 
 export function getTagLabel(tag: string): string {

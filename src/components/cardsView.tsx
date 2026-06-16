@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ContentCard, ContentSourceItem } from "@/lib/contentCards";
 import Image from "next/image";
 import { getTagLabel } from "@/lib/tagLabels";
@@ -243,6 +243,22 @@ function ExpandIcon({
   );
 }
 
+function InfoIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <Image
+      src="/icons/info.svg"
+      alt=""
+      width={24}
+      height={24}
+      className={className}
+      style={{
+        filter: "invert(1)",
+        opacity: 0.68,
+      }}
+    />
+  );
+}
+
 function getCardLatestDate(card: ContentCard): string {
   const dates = card.items
     .map((item) => item.lastDate || item.firstDate)
@@ -358,14 +374,56 @@ function CardMaterials({ card }: { card: ContentCard }) {
   );
 }
 
+function StatPill({
+  value,
+  label,
+  icon,
+  style,
+}: {
+  value: number;
+  label: string;
+  icon: string;
+  style: React.CSSProperties;
+}) {
+  return (
+    <div
+      style={{ ...style, width: 170, height: 66 }}
+      className="flex items-center gap-3 rounded-2xl border px-4 py-3"
+    >
+      <Image
+        src={icon}
+        alt=""
+        width={30}
+        height={30}
+        style={{
+          filter: "invert(1)",
+          opacity: 0.68,
+        }}
+        className="shrink-0"
+      />
+
+      <div className="flex flex-col justify-center leading-none">
+        <div className="text-2xl font-bold text-zinc-100">
+          {value}
+        </div>
+
+        <div className="mt-1 text-sm text-zinc-400">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function CardsView({ cards }: Props) {
   const [openCardId, setOpenCardId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState("all");
   const [selectedPlatform, setSelectedPlatform] = useState("all");
-  const [selectedTag, setSelectedTag] = useState("all");
+  // const [selectedTag, setSelectedTag] = useState("all");
   const [sortBy, setSortBy] = useState("date_desc");
 
+    /*
   const cardsForTagFilter = useMemo(() => {
     return cards.filter((card) => {
       const matchesTab =
@@ -374,7 +432,9 @@ export function CardsView({ cards }: Props) {
       return matchesTab && cardMatchesPlatform(card, selectedPlatform);
     });
   }, [cards, selectedTab, selectedPlatform]);
+  */
 
+  /*
   const availableTags = useMemo(() => {
     const tags = new Set<string>();
 
@@ -386,6 +446,7 @@ export function CardsView({ cards }: Props) {
       getTagLabel(a).localeCompare(getTagLabel(b), "ru")
     );
   }, [cardsForTagFilter]);
+  */
 
   const filteredCards = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -395,9 +456,6 @@ export function CardsView({ cards }: Props) {
         selectedTab === "all" || card.contentType === selectedTab;
 
       const platformOk = cardMatchesPlatform(card, selectedPlatform);
-
-      const matchesTag =
-        selectedTag === "all" || card.tags.includes(selectedTag);
 
       const text = [
         card.title,
@@ -411,7 +469,7 @@ export function CardsView({ cards }: Props) {
 
       const matchesSearch = !query || text.includes(query);
 
-      return matchesTab && platformOk && matchesTag && matchesSearch;
+      return matchesTab && platformOk && matchesSearch;
     });
 
     return [...result].sort((a, b) => {
@@ -429,10 +487,65 @@ export function CardsView({ cards }: Props) {
 
       return getCardMaxDate(b) - getCardMaxDate(a);
     });
-  }, [cards, search, selectedTab, selectedPlatform, selectedTag, sortBy]);
+  }, [cards, search, selectedTab, selectedPlatform, sortBy]);
+
+  const contentStats = useMemo(() => {
+    return {
+      movies: cards.filter((card) => card.contentType === "movie").length,
+      series: cards.filter((card) => card.contentType === "series").length,
+      games: cards.filter((card) => card.contentType === "game").length,
+      anime: cards.filter((card) => card.contentType === "anime").length,
+    };
+  }, [cards]);
 
   return (
     <>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <StatPill
+          value={contentStats.movies}
+          label="фильмов"
+          icon="/icons/movie.svg"
+          style={{
+            borderColor: "rgba(168, 85, 247, 0.42)",
+            background:
+              "linear-gradient(135deg, rgba(88, 28, 135, 0.30), rgba(24, 24, 27, 0.70))",
+          }}
+        />
+
+        <StatPill
+          value={contentStats.series}
+          label="сериалов"
+          icon="/icons/series.svg"
+          style={{
+            borderColor: "rgba(37, 99, 235, 0.42)",
+            background:
+              "linear-gradient(135deg, rgba(30, 64, 175, 0.26), rgba(24, 24, 27, 0.70))",
+          }}
+        />
+
+        <StatPill
+          value={contentStats.games}
+          label="игр"
+          icon="/icons/game.svg"
+          style={{
+            borderColor: "rgba(21, 128, 61, 0.42)",
+            background:
+              "linear-gradient(135deg, rgba(20, 83, 45, 0.30), rgba(24, 24, 27, 0.70))",
+          }}
+        />
+
+        <StatPill
+          value={contentStats.anime}
+          label="аниме"
+          icon="/icons/anime.svg"
+          style={{
+            borderColor: "rgba(236, 72, 153, 0.42)",
+            background:
+              "linear-gradient(135deg, rgba(157, 23, 77, 0.30), rgba(24, 24, 27, 0.70))",
+          }}
+        />
+      </div>
+      
       <div className="mt-8 flex flex-wrap gap-3">
         {tabs.map((tab) => (
           <button
@@ -440,7 +553,7 @@ export function CardsView({ cards }: Props) {
             type="button"
             onClick={() => {
               setSelectedTab(tab.value);
-              setSelectedTag("all");
+              // setSelectedTag("all");
               setOpenCardId(null);
             }}
             className={`rounded-xl px-5 py-3 text-base font-medium transition ${
@@ -467,7 +580,7 @@ export function CardsView({ cards }: Props) {
           value={selectedPlatform}
           onChange={(event) => {
             setSelectedPlatform(event.target.value);
-            setSelectedTag("all");
+            // setSelectedTag("all");
             setOpenCardId(null);
           }}
           className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2"
@@ -478,6 +591,7 @@ export function CardsView({ cards }: Props) {
           <option value="boosty">Boosty</option>
         </select>
 
+        {/*
         <select
           value={selectedTag}
           onChange={(event) => {
@@ -494,6 +608,7 @@ export function CardsView({ cards }: Props) {
             </option>
           ))}
         </select>
+          */}
 
         <select
           value={sortBy}

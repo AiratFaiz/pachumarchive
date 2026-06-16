@@ -239,9 +239,10 @@ def main():
     print(new_content_df.head().T)
 
     now = datetime.now().isoformat(timespec="seconds")
+    approved_mask = drafts_df["status"] == "approved"
 
-    drafts_df.loc[drafts_df["status"] == "approved", "status"] = "imported"
-    drafts_df.loc[drafts_df["status"] == "imported", "imported_at"] = now
+    drafts_df.loc[approved_mask, "status"] = "imported"
+    drafts_df.loc[approved_mask, "imported_at"] = now
 
     drafts_df.to_csv(
         DRAFTS_PATH,

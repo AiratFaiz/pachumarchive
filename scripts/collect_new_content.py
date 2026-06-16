@@ -249,10 +249,15 @@ def collect_boosty(existing_urls):
     for post in posts:
         source_id = str(post.get("id", ""))
         title = post.get("title") or ""
-        description = post.get("teaser") or ""
         source_url = post.get("url") or f"https://boosty.to/{BOOSTY_BLOG}/posts/{source_id}"
         source_date = str(post.get("createdAt") or "")
-        description = extract_boosty_description(post)
+
+        description = (
+            extract_boosty_description(post)
+            or post.get("teaser")
+            or ""
+        )
+
         duration = get_boosty_duration(post)
         
 

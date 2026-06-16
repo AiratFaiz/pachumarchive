@@ -697,7 +697,7 @@ export function CardsView({ cards }: Props) {
                                 </div>
 
                                 <div className="mt-2 h-[64px] overflow-hidden">
-                                    <h2 className="overflow-hidden text-ellipsis text-2xl font-bold leading-tight [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical]">
+                                    <h2 className="text-2xl font-bold leading-tight md:overflow-hidden md:text-ellipsis md:[display:-webkit-box] md:[-webkit-line-clamp:2] md:[-webkit-box-orient:vertical]">
                                         {card.title}
                                     </h2>
                                 </div>

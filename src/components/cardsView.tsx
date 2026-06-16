@@ -637,9 +637,11 @@ export function CardsView({ cards }: Props) {
 
           const isOpen = openCardId === card.cardId;
 
+          const sourceOrder = ["boosty", "youtube", "telegram"];
+
           const sources = Array.from(
             new Set(visibleItems.map((item) => getItemSource(item)))
-          );
+          ).sort((a, b) => sourceOrder.indexOf(a) - sourceOrder.indexOf(b));
 
           const singleItem =
             visibleItems.length === 1 ? visibleItems[0] : null;
@@ -730,17 +732,17 @@ export function CardsView({ cards }: Props) {
 
                         <div>
                             <div className="flex items-end justify-between gap-3">
-                                <div className="flex h-[34px] flex-wrap gap-2 overflow-hidden text-sm">
-                                    {sources.map((source) => (
-                                        <span
-                                            key={source}
-                                            className="flex items-center gap-2 rounded-xl border border-zinc-700 px-3 py-1 text-zinc-300"
-                                        >
-                                            <SourceIcon source={source} />
-                                            <span>{sourceLabels[source] ?? source}</span>
-                                        </span>
-                                    ))}
-                                </div>
+                              <div className="flex h-[34px] flex-wrap gap-2 overflow-hidden text-sm">
+                                {sources.map((source) => (
+                                  <span
+                                    key={source}
+                                    title={sourceLabels[source] ?? source}
+                                    className="flex items-center justify-center"
+                                  >
+                                    <SourceIcon source={source} />
+                                  </span>
+                                ))}
+                              </div>
 
                                 <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center text-zinc-500 hover:text-zinc-300">
                                     {singleItem ? (

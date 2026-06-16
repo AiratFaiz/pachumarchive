@@ -70,8 +70,8 @@ export function ArchiveNotice() {
         <div
             style={{
             position: "fixed",
-            top: 86,
-            right: 200,
+            top: 74,
+            right: "clamp(16px, 12vw, 190px)",
             zIndex: 9999,
             width: "min(448px, calc(100vw - 32px))",
             backgroundColor: "#000000",

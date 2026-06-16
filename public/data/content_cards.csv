@@ -163,4 +163,5 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 162,Шерлок Холмс (2009),movie,"movie,sherlok",,,1
 163,Шапито-шоу: Любовь и дружба (2011),movie,"movie,shapito",,,1
 164,Чудо в камере № 7 (2019),movie,"movie,chudo",,,1
-165,Кукинги,irl,"irl,cooking",,,
+165,Кукинги,irl,"irl,cooking",,,1
+166,Силиконовая долина,series,"series,silicon",,,1

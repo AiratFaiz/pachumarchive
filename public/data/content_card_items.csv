@@ -387,6 +387,7 @@ card_id,content_id,sort_order,card_name
 41,cnt_dd796e7bec,,Drago
 41,cnt_d21a94ae4f,,Drago
 41,cnt_668828a6b7,,Drago
+41,cnt_5e9fd07ca7,,Drago
 42,cnt_0bfd0b8ff8,,Exile
 42,cnt_8e7757f0ed,,Exile
 42,cnt_bc3c77c29b,,Exile
@@ -443,6 +444,7 @@ card_id,content_id,sort_order,card_name
 46,cnt_69816d2084,,ОСД
 46,cnt_bd313ac856,,ОСД
 46,cnt_407c8f0d77,,ОСД
+46,cnt_3c72b6d6f7,,ОСД
 47,cnt_369d8cd93e,,Хайлайты
 47,cnt_e0be10c63f,,Хайлайты
 47,cnt_b9769f716d,,Хайлайты
@@ -1106,6 +1108,7 @@ card_id,content_id,sort_order,card_name
 132,cnt_5c82a7cc60,101,Сверхъестественное
 132,cnt_69f5d07c2b,102,Сверхъестественное
 132,cnt_62ece06c64,103,Сверхъестественное
+132,cnt_3296a5426e,104,Сверхъестественное
 133,cnt_57082ca78d,,Одни из нас
 133,cnt_28d0d07661,,Одни из нас
 133,cnt_cbe9e0d650,,Одни из нас
@@ -1207,3 +1210,4 @@ card_id,content_id,sort_order,card_name
 165,cnt_d0288127e4,,Кукинги
 165,cnt_a30dc267b5,,Кукинги
 165,cnt_d068ea3856,,Кукинги
+166,cnt_3fe4723506,,Силиконовая долина

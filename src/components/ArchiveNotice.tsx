@@ -72,6 +72,7 @@ export function ArchiveNotice() {
             position: "fixed",
             top: 74,
             right: "clamp(16px, 12vw, 190px)",
+            transform: "translateX(clamp(12px, 4vw, 32px))",
             zIndex: 9999,
             width: "min(448px, calc(100vw - 32px))",
             backgroundColor: "#000000",

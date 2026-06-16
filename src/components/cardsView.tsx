@@ -656,7 +656,7 @@ export function CardsView({ cards }: Props) {
           return (
             <div
                 key={card.cardId}
-                style={{ height: isOpen ? "auto" : 275 }}
+                style={{ minHeight: 275 }}
                 className={`flex flex-col overflow-hidden rounded-3xl border transition ${
                     isOpen
                         ? "border-zinc-500 bg-zinc-900"
@@ -676,7 +676,7 @@ export function CardsView({ cards }: Props) {
                         setOpenCardId(isOpen ? null : card.cardId);
                     }}
                     className="grid w-full shrink-0 overflow-hidden p-6 text-left"
-                    style={{ height: 275, gridTemplateRows: "auto 1fr auto" }}
+                    style={{ minHeight: 275, gridTemplateRows: "auto 1fr auto" }}
                 >
                     <div>
                         <div className="flex items-start justify-between gap-4">
@@ -696,8 +696,8 @@ export function CardsView({ cards }: Props) {
                                     )}
                                 </div>
 
-                                <div className="mt-2 h-[64px] overflow-hidden">
-                                    <h2 className="text-2xl font-bold leading-tight md:overflow-hidden md:text-ellipsis md:[display:-webkit-box] md:[-webkit-line-clamp:2] md:[-webkit-box-orient:vertical]">
+                                <div className="mt-2">
+                                    <h2 className="text-2xl font-bold leading-tight">
                                         {card.title}
                                     </h2>
                                 </div>

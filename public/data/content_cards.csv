@@ -421,4 +421,4 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 420,Гарри Поттер и Принц-полукровка (2009),movie,"hp,movie",,,1
 421,Гарри Поттер и Тайная комната (2002),movie,"hp,movie",,,1
 422,Гарри Поттер и Узник Азкабана (2004),movie,"hp,movie",,,1
-423,Гарри Поттер и Кубок огня (2005),,,,,
+423,Гарри Поттер и Кубок огня (2005),movie,"hp,movie",,,

@@ -17,8 +17,7 @@ export default async function HomePage() {
         </div>
 
         <p className="mt-4 max-w-3xl text-lg text-zinc-400">
-          Архив просмотренного и пройденного контента Пачуки. Фильмы, сериалы,
-          аниме, игры, баттлрэп, музыка и многое другое.
+          Полная доступная история контента в одном месте.
         </p>
 
         <CardsView cards={cards} />

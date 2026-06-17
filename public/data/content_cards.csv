@@ -421,11 +421,39 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 420,Гарри Поттер и Принц-полукровка (2009),movie,"hp,movie",,,1
 421,Гарри Поттер и Тайная комната (2002),movie,"hp,movie",,,1
 422,Гарри Поттер и Узник Азкабана (2004),movie,"hp,movie",,,1
-423,Гарри Поттер и Кубок огня (2005),movie,"hp,movie",,,
-424,Звёздные войны: Эпизод 3 — Месть ситхов (2005),movie,"movie,sw",8.5,telegram,
-425,Звёздные войны: Эпизод 4 — Новая надежда (1977),movie,"movie,sw",6,telegram,
-426,Звёздные войны: Эпизод 5 — Империя наносит ответный удар (1980),movie,"movie,sw",7.5,telegram,
-427,Звёздные войны: Эпизод 6 — Возвращение Джедая (1983),movie,"movie,sw",7,telegram,
-428,Звёздные войны. Эпизод 2 - Атака клонов (2002),movie,"movie,sw",7,telegram,
-429,Изгой-один: Звёздные войны. Истории (2016),movie,"movie,sw",7.5,telegram,
-430,Хоббит: Пустошь Смауга (2013),movie,"movie,hobbit",7.5,telegram,
+423,Гарри Поттер и Кубок огня (2005),movie,"hp,movie",,,1
+424,Звёздные войны: Эпизод 3 — Месть ситхов (2005),movie,"movie,sw",8.5,telegram,1
+425,Звёздные войны: Эпизод 4 — Новая надежда (1977),movie,"movie,sw",6,telegram,1
+426,Звёздные войны: Эпизод 5 — Империя наносит ответный удар (1980),movie,"movie,sw",7.5,telegram,1
+427,Звёздные войны: Эпизод 6 — Возвращение Джедая (1983),movie,"movie,sw",7,telegram,1
+428,Звёздные войны. Эпизод 2 - Атака клонов (2002),movie,"movie,sw",7,telegram,1
+429,Изгой-один: Звёздные войны. Истории (2016),movie,"movie,sw",7.5,telegram,1
+430,Хоббит: Пустошь Смауга (2013),movie,"movie,hobbit",7.5,telegram,1
+431,Manor Lords,game,game,,,1
+432,Dishonored,game,game,,,1
+433,Gartic Phone ,game,game,,,1
+434,VISAGE ,game,game,,,1
+435,Люди Икс: Первый класс (2011),movie,movie,7.5,boosty,1
+436,Грязь (2013),movie,movie,,,1
+437,Люди Икс: Дни минувшего будущего (2014),movie,movie,7.5,boosty,1
+438,Oxxxymiron - Exit,music,music,,,1
+439,БАБАНГИДА vs ANACONDAZ - АЛЬБОМБАБАТТЛ,music,music,,,1
+440,Oxxxymiron - Национальность: нет,music,music,,,1
+441,Jubilee - ЛИХО,music,music,,,1
+442,Markul - Make Depression Great Again,music,music,,,1
+443,Oxxxymiron — MIXXXTAPE I,music,music,,,1
+444,"ЛСП ""Magic City"", ""Tragic City"", ""One More City""",music,music,,,1
+445,Oxxxymiron — The Story Of Alisher,music,music,,,1
+446,Oxxxymiron — Мох,music,music,,,1
+447,Тирлист русских рэперов,videos,tier_list,,,1
+448,Вписка с Mellstroy,videos,"videos,vpiska",,,1
+449,Вписка с Папичем,videos,"videos,vpiska",,,1
+450,Вписка со Славой КПСС,videos,"videos,vpiska",,,1
+451,Вписка с Хованским,videos,"videos,vpiska",,,1
+452,Comedy Table №5,videos,"comedy_table,videos",,,1
+453,Comedy Table №18,videos,"comedy_table,videos",,,1
+454,Кубок МЦ: 11 - Впечатления от встречи,videos,"battle_rap,kbk,music",,,1
+455,Реакция на Кубок МЦ: XX Cypher 2,videos,"battle_rap,kbk,music",,,1
+456,Влоги Аббалбиска из Вьетнама,videos,"battle_rap,videos",,,1
+457,"Obe 1 vs Птаха - Конференция на ""Наше дело""",videos,"videos,battle_rap",,,1
+458,"Дорогая, я забил #1",degrod,degrod,,,1

@@ -32,6 +32,7 @@ const DATA_DIR = path.join(process.cwd(), "public", "data");
 const CONTENT_ITEMS_PATH = path.join(DATA_DIR, "content_items.csv");
 const CONTENT_CARDS_PATH = path.join(DATA_DIR, "content_cards.csv");
 const CONTENT_CARD_ITEMS_PATH = path.join(DATA_DIR, "content_card_items.csv");
+const VISIBLE_UNKNOWN_TAG = "gustav";
 
 async function readCsv(pathToFile: string): Promise<Record<string, string>[]> {
   const csvText = await fs.readFile(pathToFile, "utf-8");
@@ -71,6 +72,12 @@ function getCardMaxDate(card: ContentCard): number {
     ...card.items.map((item) => getDateTime(item.lastDate || item.firstDate)),
     0
   );
+}
+
+function isVisibleCard(card: ContentCard): boolean {
+  if (card.contentType !== "unknown") return true;
+
+  return card.tags.includes(VISIBLE_UNKNOWN_TAG);
 }
 
 function sortItemsInsideCard(items: ContentSourceItem[]): ContentSourceItem[] {
@@ -168,7 +175,7 @@ export async function getContentCards(): Promise<ContentCard[]> {
       items: sortItemsInsideCard([item]),
     }));
 
-  return [...realCards, ...singleItemCards].sort(
+  return [...realCards, ...singleItemCards].filter(isVisibleCard).sort(
     (a, b) => getCardMaxDate(b) - getCardMaxDate(a)
   );
 }

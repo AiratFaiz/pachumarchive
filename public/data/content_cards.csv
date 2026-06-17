@@ -37,7 +37,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 36,Баттл-рэп: Главное,battle_rap,"battle_rap,br_main",,,1
 37,Беременна в 16 (Мама в 16),degrod,"videos,bv16",,,1
 38,Положняки (Бусти),videos,polozh,,,1
-39,Counter Strike ,game,"game,cs",,,1
+39,Counter Strike,game,"game,cs",,,1
 40,Пенсионерские стримы,game,"game,pens",,,1
 41,Просмотр Владимира Бабаева aka DIGIDIDRAGO BIGEMOTE,videos,"videos,drago",,,1
 42,Видео Exile,videos,"videos,exile",,,1
@@ -148,7 +148,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 147,Only Up!,game,"game,only_up",,,1
 148,It Takes Two,game,"coop,game,itt",,,1
 149,WarCraft 3,game,"coop,game,w3",,,1
-150,Dead by Daylight ,game,"coop,game,dbd",,,1
+150,Dead by Daylight,game,"coop,game,dbd",,,1
 151,Траффик (2000),movie,"movie,traffic",5.5,boosty,1
 152,Пила 5 (2008),movie,"movie,saw5",7,boosty,1
 153,Пила 2 (2005),movie,"movie,saw2",8.5,boosty,1
@@ -431,8 +431,8 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 430,Хоббит: Пустошь Смауга (2013),movie,"movie,hobbit",7.5,telegram,1
 431,Manor Lords,game,game,,,1
 432,Dishonored,game,game,,,1
-433,Gartic Phone ,game,game,,,1
-434,VISAGE ,game,game,,,1
+433,Gartic Phone,game,game,,,1
+434,VISAGE,game,game,,,1
 435,Люди Икс: Первый класс (2011),movie,movie,7.5,boosty,1
 436,Грязь (2013),movie,movie,,,1
 437,Люди Икс: Дни минувшего будущего (2014),movie,movie,7.5,boosty,1
@@ -472,9 +472,21 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 471,НОКТУ х ШУММ,battle_rap,"battle_rap,kbk",,,1
 472,SLOVO Moscow 3 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
 473,SLOVOSPB 3 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
-474,Fresh Blood 3 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
-475,Fresh Blood 4 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
+474,Versus Fresh Blood 3 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
+475,Versus Fresh Blood 4 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
 476,Рвать на битах | Ретроспектива,battle_rap,"battle_rap,retro,rnb",,,1
 477,RBL Season 2 | Ретроспектива,battle_rap,"battle_rap,retro,rbl",,,1
 478,RBL1 | Ретроспектива,battle_rap,"battle_rap,retro,rbl",,,1
 479,ProBattle | Судейство,battle_rap,"battle_rap,probattle",,,1
+480,Versus Fresh Blood 2 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
+481,140 BPM | Ретроспектива,battle_rap,"battle_rap,retro,140",,,1
+482,SLOVOSPB 2 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
+483,ТЕСТ НА ЛУЧШЕГО БАТТЛ МС,videos,"quiz,battle_rap",,,1
+484,ДИКТАТОР UAV VS PALMDROPOV - КУБОК МЦ,battle_rap,"battle_rap,kbk",,,1
+485,SLOVO Краснодар Сезон 3 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
+486,SLOVO Moscow 4 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
+487,YARMAK х АРТЕМ ЛОИК,battle_rap,battle_rap,,,1
+488,МАЙК СТИКС x ДИКТАТОР UAV - HP-BPM,battle_rap,battle_rap,,,1
+489,KNOWNAIM x T!MM! - 17 | KHAO KYLE х TILLS - HP-BPM,battle_rap,battle_rap,,,1
+490,Рвать на битах 2,battle_rap,"battle_rap,rnb",,,1
+491,RBL UNIVERSE,battle_rap,"battle_rap,rbl",,,1

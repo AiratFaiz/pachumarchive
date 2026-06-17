@@ -11,6 +11,7 @@
 !.yarn/versions
 /data_parsing
 cookies.txt
+/docs/audit_degrod.md
 
 # testing
 /coverage

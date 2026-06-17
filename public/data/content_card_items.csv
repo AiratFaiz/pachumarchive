@@ -415,6 +415,8 @@ card_id,content_id,sort_order,card_name,item_title,item_date
 42,cnt_309b5a6a82,22,Exile,ExileShow - Угадай Долларового Миллионера,2025-08-08 9:38:00
 42,cnt_8caa68d0d1,23,Exile,ExileShow - Угадай Настоящего Экстрасенса!,2025-07-05 9:55:00
 42,cnt_7c1968ad6f,24,Exile,ExileShow - Угадай Рэпера,2025-06-29 10:28:00
+42,cnt_a967e0038b,,Exile,Эксайл - Угадай Комика,2026-06-16 15:03:03
+42,cnt_dac11ea217,,Exile,"ПАЧУКА СМОТРИТ - Угадай Комика ! Взрослые Угадывают Сергея Орлова (Сатир, BigRussianBoss, Кукояка)",2026-06-17 0:00:00
 43,cnt_9eff575e75,,WWE 2k26,ПАЧУКА ПРОВОДИТ ТУРНИР ПО РЕСЛИНГУ СРЕДИ РЭПЕРОВ (WWE 2K26),2026-06-05 0:00:00
 43,cnt_cdf9525e94,,WWE 2k26,Первый турнир среди рэперов по реслингу WWE 2K26,2026-06-04 9:35:49
 44,cnt_b54316107d,20,Demon souls,DEMON'S SOULS ПРОХОЖДЕНИЕ: МОЛОДОЙ МАЛЬЧИШКА ЕЩЕ НЕ ПОНЯЛ КУДА СУНУЛСЯ,2021-01-09 0:00:00
@@ -2017,3 +2019,5 @@ card_id,content_id,sort_order,card_name,item_title,item_date
 491,cnt_ed782bd993,,RBL UNIVERSE,МЦ СПРАВА х SECTOR - RBL UNIVERSE | АЙС х ВЕНЯ ГРОМОВ - #STRELASPB (РЕАКЦИЯ),2021-07-26 0:00:00
 491,cnt_b8a6e5b863,,RBL UNIVERSE,ДИКТАТОР UAV х ИЗТОЛПЫ - RBL UNIVERSE | ИЗТОЛПЫ х КОРИФЕЙ - ZLOVO EKB | ТРЕТЬЯ ЛИГА - СУДЕЙСТВО,2021-07-14 0:00:00
 491,cnt_1a39d79862,,RBL UNIVERSE,DEEP-EX-SENSE х ЖАБА АРКАДЬЕВНА - RBL UNIVERSE | КЕПКИН х BAJI TEMPERO - ZLOVO EKB (РЕАКЦИЯ),2021-08-17 0:00:00
+492,cnt_a55a5ee56c,,Пила 3D (2010),Пила 3D (2010),2026-06-17 16:24:01
+492,cnt_e5ebb08261,,Пила 3D (2010),Пила 3D (2010),2026-05-12 10:12:25

@@ -198,6 +198,8 @@ export const tagLabels: Record<string, string> = {
     cooking: "Кукинг",
     silicon: "Силиконовая долина",
     saw6: "Пила 6",
+    hobbit: "Хоббит",
+    gustav: "Густав",
 };
 
 export function getTagLabel(tag: string): string {

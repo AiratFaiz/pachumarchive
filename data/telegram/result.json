@@ -4,20 +4,20 @@
  "id": 2447843635,
  "messages": [
   {
-   "id": 3851,
+   "id": 3854,
    "type": "message",
-   "date": "2026-06-16T16:14:01",
-   "date_unixtime": "1781612041",
-   "edited": "2026-06-16T17:10:07",
-   "edited_unixtime": "1781615407",
+   "date": "2026-06-17T16:24:01",
+   "date_unixtime": "1781699041",
+   "edited": "2026-06-17T16:29:24",
+   "edited_unixtime": "1781699364",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "photo": "(File not included. Change data exporting settings to download.)",
-   "photo_file_size": 134846,
+   "photo_file_size": 198074,
    "width": 1280,
    "height": 720,
    "text": [
-    "Пила 6 (2009)\n",
+    "Пила 3D (2010)\n",
     {
      "type": "custom_emoji",
      "text": "🤪",
@@ -26,7 +26,7 @@
     " - ",
     {
      "type": "spoiler",
-     "text": "7/10"
+     "text": "6/10"
     },
     "\n\n",
     {
@@ -74,7 +74,7 @@
    "text_entities": [
     {
      "type": "plain",
-     "text": "Пила 6 (2009)\n"
+     "text": "Пила 3D (2010)\n"
     },
     {
      "type": "custom_emoji",
@@ -87,7 +87,7 @@
     },
     {
      "type": "spoiler",
-     "text": "7/10"
+     "text": "6/10"
     },
     {
      "type": "plain",
@@ -159,50 +159,50 @@
    "reactions": [
      {
       "type": "emoji",
-      "count": 2,
+      "count": 4,
       "emoji": "🔥"
      }
     ]
   },
   {
-   "id": 3852,
+   "id": 3855,
    "type": "message",
-   "date": "2026-06-16T16:14:01",
-   "date_unixtime": "1781612041",
-   "edited": "2026-06-16T16:14:04",
-   "edited_unixtime": "1781612044",
+   "date": "2026-06-17T16:24:01",
+   "date_unixtime": "1781699041",
+   "edited": "2026-06-17T16:24:04",
+   "edited_unixtime": "1781699044",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "file": "(File not included. Change data exporting settings to download.)",
-   "file_name": "111.mp4",
-   "file_size": 1557771988,
+   "file_name": "1111.mp4",
+   "file_size": 2003698620,
    "thumbnail": "(File not included. Change data exporting settings to download.)",
-   "thumbnail_file_size": 12166,
+   "thumbnail_file_size": 15117,
    "media_type": "video_file",
    "mime_type": "video/mp4",
-   "duration_seconds": 3038,
+   "duration_seconds": 2748,
    "width": 1280,
    "height": 720,
    "text": "",
    "text_entities": []
   },
   {
-   "id": 3853,
+   "id": 3856,
    "type": "message",
-   "date": "2026-06-16T16:14:01",
-   "date_unixtime": "1781612041",
-   "edited": "2026-06-16T16:14:04",
-   "edited_unixtime": "1781612044",
+   "date": "2026-06-17T16:24:01",
+   "date_unixtime": "1781699041",
+   "edited": "2026-06-17T16:24:04",
+   "edited_unixtime": "1781699044",
    "from": "ГУЗЕЛЬСКИЕ ПЕРЕЗАЛИВЫ",
    "from_id": "channel2447843635",
    "file": "(File not included. Change data exporting settings to download.)",
-   "file_name": "222.mp4",
-   "file_size": 1464986271,
+   "file_name": "2222.mp4",
+   "file_size": 1835393495,
    "thumbnail": "(File not included. Change data exporting settings to download.)",
-   "thumbnail_file_size": 10369,
+   "thumbnail_file_size": 8187,
    "media_type": "video_file",
    "mime_type": "video/mp4",
-   "duration_seconds": 2751,
+   "duration_seconds": 3023,
    "width": 1280,
    "height": 720,
    "text": "",

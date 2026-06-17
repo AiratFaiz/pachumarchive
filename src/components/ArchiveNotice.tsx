@@ -66,9 +66,9 @@ export function ArchiveNotice() {
         <InfoIcon />
       </button>
 
-        {isOpen && (
+      {isOpen && (
         <div
-            style={{
+          style={{
             position: "fixed",
             top: 74,
             right: "clamp(16px, 12vw, 190px)",
@@ -76,49 +76,38 @@ export function ArchiveNotice() {
             zIndex: 9999,
             width: "min(448px, calc(100vw - 32px))",
             backgroundColor: "#000000",
-            }}
-            className="rounded-2xl border border-zinc-700 p-4 text-sm leading-relaxed text-zinc-300 shadow-2xl"
+          }}
+          className="rounded-2xl border border-zinc-700 p-4 text-sm leading-relaxed text-zinc-300 shadow-2xl"
         >
-            <div className="mb-2 text-base font-semibold text-zinc-100">
+          <div className="mb-2 text-base font-semibold text-zinc-100">
             Информация об архиве
-            </div>
+          </div>
 
-            <p>
-            Работа над архивом продолжается. Возможны неточности, дубли,
-            отсутствующие оценки и неполная информация по отдельным материалам.
-            Счетчики могут немного привирать.
-            </p>
+          <p>
+            Архив активно размечается: возможны неточности, дубли и неполные
+            карточки. Счётчики могут немного расходиться с реальностью.
+          </p>
 
-            <p className="mt-3">
-            На данный момент наиболее качественно обработаны:
-            </p>
+          <p className="mt-3">Лучше всего сейчас обработаны:</p>
 
-            <ul className="mt-2 list-disc pl-5 text-zinc-400">
-            <li>Игры</li>
-            <li>Фильмы</li>
-            <li>Сериалы</li>
-            <li>Частично раздел «Дегрод»</li>
-            </ul>
+          <ul className="mt-2 list-disc pl-5 text-zinc-400">
+            <li>игры, фильмы, сериалы и аниме;</li>
+            <li>дегрод, музыка, видео и баттл-рэп — частично.</li>
+          </ul>
 
-            <p className="mt-3">
-            Остальные категории постепенно приводятся в порядок.
-            </p>
-
-            <p className="mt-3">
-            Если нашли ошибку или хотите предложить улучшение — пишите:
-            
-
+          <p className="mt-3">
+            Нашли ошибку или хотите предложить улучшение — пишите:{" "}
             <a
-            href="https://t.me/FaiziK_A"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block font-medium text-sky-400 hover:text-sky-300"
+              href="https://t.me/FaiziK_A"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-sky-400 hover:text-sky-300"
             >
-            @FaiziK_A
+              @FaiziK_A
             </a>
-            </p>
+          </p>
         </div>
-        )}
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { sourceLabels } from "@/lib/contentMeta";
 import {
   formatDate,
   formatDuration,
+  formatRating,
   getItemSource,
   getItemUrl,
   hasValidDuration,
@@ -34,6 +35,12 @@ export function SourceLink({ item }: { item: ContentSourceItem }) {
         </div>
 
         <div className="flex shrink-0 items-center gap-4 text-sm text-zinc-400">
+          {item.rating && (
+            <span className="whitespace-nowrap rounded-full bg-zinc-800 px-2.5 py-1 font-semibold text-zinc-200">
+              {formatRating(item.rating)}
+            </span>
+          )}
+
           {hasValidDuration(item.durationHours) && (
             <span className="whitespace-nowrap">
               {formatDuration(item.durationHours)}

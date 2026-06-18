@@ -14,6 +14,7 @@ import {
 import {
   cardMatchesPlatform,
   formatDate,
+  formatRating,
   getCardLatestDate,
   getCardMaxDate,
   getFilteredCardItems,
@@ -31,6 +32,105 @@ import { StatPill } from "@/components/cards/StatPill";
 type Props = {
   cards: ContentCard[];
 };
+
+type SearchMatchStrength = "strong" | "weak";
+
+type SearchResult = {
+  card: ContentCard;
+  matchStrength: SearchMatchStrength;
+  matchedItems: ContentCard["items"];
+};
+
+function normalizeSearchText(value: string): string {
+  return value.toLowerCase();
+}
+
+function getSearchParts(value: string): string[] {
+  return normalizeSearchText(value)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean);
+}
+
+function textMatches(query: string, values: string[]): boolean {
+  const queryTokens = getSearchParts(query);
+
+  return values.some((value) => {
+    const normalizedValue = normalizeSearchText(value);
+    const valueParts = getSearchParts(value);
+
+    return (
+      normalizedValue.includes(query) ||
+      queryTokens.every((token) =>
+        valueParts.some((part) => part.startsWith(token))
+      )
+    );
+  });
+}
+
+function technicalFieldMatches(query: string, values: string[]): boolean {
+  const queryTokens = getSearchParts(query);
+
+  return values.some((value) => {
+    const valueParts = getSearchParts(value);
+
+    return queryTokens.every((token) =>
+      valueParts.some((part) => part.startsWith(token))
+    );
+  });
+}
+
+function getCardSearchStrength(
+  card: ContentCard,
+  query: string,
+  selectedPlatform: string
+): SearchResult | null {
+  const platformItems = getFilteredCardItems(card, selectedPlatform);
+
+  if (platformItems.length === 0) {
+    return null;
+  }
+
+  if (!query) {
+    return {
+      card,
+      matchStrength: "strong",
+      matchedItems: platformItems,
+    };
+  }
+
+  const strongMatch =
+    textMatches(query, [
+      card.title,
+      contentTypeLabels[card.contentType] ?? "",
+      ...card.tags.map((tag) => getTagLabel(tag)),
+    ]) || technicalFieldMatches(query, [card.contentType, ...card.tags]);
+
+  if (strongMatch) {
+    return {
+      card,
+      matchStrength: "strong",
+      matchedItems: platformItems,
+    };
+  }
+
+  const matchedItems = platformItems.filter((item) =>
+    textMatches(query, [
+      item.title,
+      contentTypeLabels[item.contentType] ?? "",
+      ...item.tags.map((tag) => getTagLabel(tag)),
+    ]) || technicalFieldMatches(query, [item.contentType, ...item.tags])
+  );
+
+  if (matchedItems.length === 0) {
+    return null;
+  }
+
+  return {
+    card,
+    matchStrength: "weak",
+    matchedItems,
+  };
+}
 
 export function CardsView({ cards }: Props) {
   const [openCardId, setOpenCardId] = useState<string | null>(null);
@@ -68,41 +168,66 @@ export function CardsView({ cards }: Props) {
   const filteredCards = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    const result = cards.filter((card) => {
+    const result = cards.reduce<SearchResult[]>((acc, card) => {
       const matchesTab =
         selectedTab === "all" || card.contentType === selectedTab;
 
-      const platformOk = cardMatchesPlatform(card, selectedPlatform);
+      if (!matchesTab || !cardMatchesPlatform(card, selectedPlatform)) {
+        return acc;
+      }
 
-      const text = [
-        card.title,
-        card.contentType,
-        card.rating,
-        card.tags.join(" "),
-        card.items.map((item) => item.title).join(" "),
-      ]
-        .join(" ")
-        .toLowerCase();
+      const searchResult = getCardSearchStrength(card, query, selectedPlatform);
 
-      const matchesSearch = !query || text.includes(query);
+      if (searchResult) {
+        acc.push(searchResult);
+      }
 
-      return matchesTab && platformOk && matchesSearch;
+      return acc;
+    }, []);
+
+    const strongMatchedItemIds = new Set(
+      result
+        .filter((searchResult) => searchResult.matchStrength === "strong")
+        .flatMap((searchResult) =>
+          searchResult.matchedItems.map((item) => item.contentId)
+        )
+    );
+
+    const visibleResults = result.flatMap((searchResult) => {
+      if (searchResult.matchStrength === "strong") {
+        return [searchResult];
+      }
+
+      const matchedItems = searchResult.matchedItems.filter(
+        (item) => !strongMatchedItemIds.has(item.contentId)
+      );
+
+      if (matchedItems.length === 0) {
+        return [];
+      }
+
+      return [
+        {
+          ...searchResult,
+          matchedItems,
+        },
+      ];
     });
 
-    return [...result].sort((a, b) => {
+    return [...visibleResults].sort((a, b) => {
       if (sortBy === "title_asc") {
-        return a.title.localeCompare(b.title, "ru");
+        return a.card.title.localeCompare(b.card.title, "ru");
       }
 
       if (sortBy === "title_desc") {
-        return b.title.localeCompare(a.title, "ru");
+        return b.card.title.localeCompare(a.card.title, "ru");
       }
 
       if (sortBy === "date_asc") {
-        return getCardMaxDate(a) - getCardMaxDate(b);
+        return getCardMaxDate(a.card) - getCardMaxDate(b.card);
       }
 
-      return getCardMaxDate(b) - getCardMaxDate(a);
+      return getCardMaxDate(b.card) - getCardMaxDate(a.card);
     });
   }, [cards, search, selectedTab, selectedPlatform, sortBy]);
 
@@ -245,21 +370,47 @@ export function CardsView({ cards }: Props) {
       </div>
 
       <div className="mt-6 grid items-start gap-5 md:grid-cols-2">
-        {filteredCards.map((card) => {
-          const visibleItems = getFilteredCardItems(card, selectedPlatform);
+        {filteredCards.map(({ card, matchStrength, matchedItems }) => {
+          const visibleItems = matchedItems;
+          const itemRatings = visibleItems
+            .map((item) => item.rating)
+            .filter(Boolean);
+          const uniqueItemRatings = Array.from(new Set(itemRatings));
+          const hasUniformItemRating =
+            visibleItems.length > 0 &&
+            itemRatings.length === visibleItems.length &&
+            uniqueItemRatings.length === 1;
+          const shouldCollapseItemRatings =
+            Boolean(card.rating) ||
+            (!card.rating &&
+              itemRatings.length > 0 &&
+              (itemRatings.length === 1 || hasUniformItemRating));
+          const ratingBadge = card.rating
+            ? formatRating(card.rating)
+            : itemRatings.length === 1 || hasUniformItemRating
+              ? formatRating(uniqueItemRatings[0])
+              : itemRatings.length > 0
+                ? `Оценки: ${itemRatings.length}`
+                : "";
           const visibleCard = {
             ...card,
-            items: visibleItems,
+            items: shouldCollapseItemRatings
+              ? visibleItems.map((item) => ({
+                  ...item,
+                  rating: "",
+                }))
+              : visibleItems,
           };
 
           const isOpen = openCardId === card.cardId;
+          const isWeakMatch = matchStrength === "weak";
 
           const sources = Array.from(
             new Set(visibleItems.map((item) => getItemSource(item)))
           ).sort((a, b) => sourceOrder.indexOf(a) - sourceOrder.indexOf(b));
 
           const singleItem =
-            visibleItems.length === 1 ? visibleItems[0] : null;
+            !isWeakMatch && visibleItems.length === 1 ? visibleItems[0] : null;
 
           return (
             <div
@@ -304,20 +455,26 @@ export function CardsView({ cards }: Props) {
                                     )}
                                 </div>
 
-                                <div className="mt-2">
-                                    <h2 className="text-2xl font-bold leading-tight">
-                                        {card.title}
-                                    </h2>
-                                </div>
-                            </div>
+                                 <div className="mt-2">
+                                     <h2 className="text-2xl font-bold leading-tight">
+                                         {card.title}
+                                     </h2>
 
-                            <div className="flex shrink-0 flex-col items-end gap-2">
-                                {card.rating && (
-                                    <div className="rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-950">
-                                        Оценка: {card.rating}/10
-                                    </div>
-                                )}
-                            </div>
+                                     {isWeakMatch && (
+                                         <div className="mt-2 text-sm text-zinc-500">
+                                             Найдено внутри: {visibleItems.length} из {card.items.length}
+                                         </div>
+                                     )}
+                                 </div>
+                             </div>
+
+                             {ratingBadge && (
+                                 <div className="flex shrink-0 flex-col items-end gap-2">
+                                     <div className="rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-950">
+                                         {ratingBadge}
+                                     </div>
+                                 </div>
+                             )}
                         </div>
 
                         {card.tags.length > 0 && (

@@ -61,6 +61,12 @@ export function formatDuration(hours: string): string {
   return `${num.toFixed(1)} ч`;
 }
 
+export function formatRating(rating: string): string {
+  if (rating === "-") return "Без оценки";
+
+  return `Оценка: ${rating}/10`;
+}
+
 export function hasValidDuration(hours: string): boolean {
   const num = Number(hours);
 

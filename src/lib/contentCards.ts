@@ -8,6 +8,7 @@ export type ContentSourceItem = {
   contentType: string;
   tags: string[];
   rating: string;
+  ratingSource: string;
   firstDate: string;
   lastDate: string;
   durationHours: string;
@@ -113,6 +114,7 @@ export async function getContentCards(): Promise<ContentCard[]> {
       contentType: row.content_type ?? "",
       tags: parseTags(row.content_tags),
       rating: row.rating ?? "",
+      ratingSource: row.rating_source ?? "",
       firstDate: row.first_date ?? "",
       lastDate: row.last_date ?? "",
       durationHours: row.duration_hours ?? "",

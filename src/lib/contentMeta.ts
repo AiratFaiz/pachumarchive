@@ -40,6 +40,56 @@ export const sortOptions = [
   { label: "По названию: Я → А", value: "title_desc" },
 ];
 
+export const battleRapPlatformFilters = [
+  { label: "Кубок МЦ", value: "kbk" },
+  { label: "SLOVO", value: "slovo" },
+  { label: "RBL", value: "rbl" },
+  { label: "140 BPM", value: "140" },
+  { label: "Рвать на битах", value: "rnb" },
+  { label: "Versus", value: "versus" },
+  { label: "STRELASPB", value: "strela" },
+  { label: "ЧСВ", value: "chsv" },
+  { label: "Триплет", value: "triplet" },
+  { label: "БЧБ", value: "bcb" },
+];
+
+export const battleRapEventsByPlatform: Record<
+  string,
+  { label: string; value: string }[]
+> = {
+  kbk: [
+    { label: "Reborn", value: "kbk_reborn" },
+    { label: "Summer Trip", value: "kbk_summer_trip" },
+    { label: "New Era", value: "kbk_new_era" },
+    { label: "Generation", value: "kbk_generation" },
+    { label: "Backyard", value: "kbk_backyard" },
+    { label: "Da Shift", value: "kbk_da_shift" },
+    { label: "7", value: "kbk_7" },
+    { label: "Infinity", value: "kbk_infinity" },
+    { label: "Chains", value: "kbk_chains" },
+    { label: "X", value: "kbk_x" },
+    { label: "11", value: "kbk_11" },
+    { label: "New Year", value: "kbk_ny" },
+    { label: "XIII", value: "kbk_13" },
+    { label: "Legacy pt. 1", value: "kbk_legacy_1" },
+    { label: "Legacy pt. 2", value: "kbk_legacy_2" },
+    { label: "KARMA", value: "kbk_karma" },
+    { label: "MARCH", value: "kbk_march" },
+    { label: "SLOVO", value: "kbk_slovo" },
+    { label: "Ultimate", value: "kbk_ultimate" },
+    { label: "Ultimate 2", value: "kbk_ultimate_2" },
+    { label: "Off Season", value: "kbk_off_season" },
+    { label: "Ultimate - Финал", value: "kbk_ultimate_final" },
+    { label: "XX", value: "kbk_xx" },
+    { label: "Summer Trap", value: "kbk_summer_trap" },
+    { label: "XX 2", value: "kbk_xx_2" },
+    { label: "XX 3", value: "kbk_xx_3" },
+    { label: "Back to basics", value: "kbk_back_to_basics" },
+    { label: "Соло Турнир", value: "kbk_solo_champ" },
+    { label: "Турнир 2х2", value: "kbk_2_2" },
+  ],
+};
+
 export const contentTypeColors: Record<
   string,
   { backgroundColor: string; border: string; color: string }

@@ -469,7 +469,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 468,SECTOR & ХХОС vs 13/47 & РЕВАНШ,battle_rap,"battle_rap,kbk",,,1
 469,БИГА ONE vs КОСНАРТ,battle_rap,"battle_rap,kbk",,,1
 470,ШУММ & SECTOR vs МАЙК СТИКС & ЭКСПАЙН,battle_rap,"battle_rap,kbk",,,1
-471,НОКТУ х ШУММ,battle_rap,"battle_rap,kbk",,,1
+471,НОКТУ х ШУММ,battle_rap,"battle_rap,kbk,kbk_ultimate_2,kbk_solo_champ",,,1
 472,SLOVO Moscow 3 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
 473,SLOVOSPB 3 | Ретроспектива,battle_rap,"battle_rap,retro,slovo",,,1
 474,Versus Fresh Blood 3 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
@@ -499,3 +499,24 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 498,BPM DAY,battle_rap,battle_rap,,,1
 499,17й Независимый (17IB),battle_rap,battle_rap,,,1
 500,"""Натальная карта"" с Харламовым, донат в 100к, гадание подписчикам, денежная вода.",videos,videos,,,1
+501,МЦ СПРАВА х АГЕНТ ДАН,battle_rap,"battle_rap,kbk,kbk_off_season",,,1
+502,БЧБ х ТРИПЛЕТ,battle_rap,"battle_rap,kbk,bcb,chsv,triplet,kbk_ultimate_final",,,1
+503,ALPHAVITE vs LETAI,battle_rap,"battle_rap,kbk,chsv,kbk_xx",,,1
+504,GLEBFIVE & 504GODLUCKWASSUP vs PALMDROPOV & SHALA,battle_rap,"battle_rap,kbk,chsv,kbk_xx_3,kbk_2_2",,,1
+505,KILLHOMIE & АГЕНТ ДАН vs ЯМИ & ZEIMAN,battle_rap,"battle_rap,kbk,kbk_xx_2",,,1
+506,R1FMABES & VERCH.FATE vs PALMDROPOV & SHALA,battle_rap,"battle_rap,kbk,kbk_xx_2,kbk_2_2",,,1
+507,КАЖЭ ОБОЙМА vs НИКИТА МАСТЯК,battle_rap,"battle_rap,kbk,chsv,kbk_xx",,,1
+508,LAWA GG vs MICKEYMOUSE,battle_rap,"battle_rap,kbk,chsv,kbk_xx_3",,,1
+509,R1FMABES & VERCH.FATE vs ШУММ & SECTOR,battle_rap,"battle_rap,kbk,chsv,kbk_xx_3,kbk_2_2",,,1
+510,RE-PAC vs DIBUR,battle_rap,"battle_rap,kbk,chsv,kbk_xx_3",,,1
+511,REDO vs МАСТЯК,battle_rap,"battle_rap,kbk,chsv,kbk_xx_3",,,1
+512,ИРЕН & EL MAD vs DOCTOR KAPUSTU! & EEUGENE SPEED,battle_rap,"battle_rap,kbk,chsv,kbk_xx_2",,,1
+513,ШУММ х МАСТЯК / GOKILLA & JEKAJIO х ДИКТАТОР UAV & ХЭМП,battle_rap,"battle_rap,kbk,kbk_ultimate_final,kbk_solo_champ",,,1
+514,ШУММ & SECTOR vs GLEBFIVE & 504GODLUCKWASSUP,battle_rap,"battle_rap,kbk,slovo,versus,kbk_xx_2,kbk_2_2",,,1
+515,ТЮЛЕНЬ vs ВИШНЯ,battle_rap,"battle_rap,kbk,versus,kbk_summer_trap",,,1
+516,НОКТУ vs МАЙК СТИКС,battle_rap,"battle_rap,kbk,kbk_ultimate,kbk_solo_champ",,,1
+517,PALMDROPOV vs ХАЙД,battle_rap,"battle_rap,kbk,kbk_back_to_basics",,,1
+518,НОКТУ х PALMDROPOV - ФИНАЛ КУБОК МЦ ULTIMATE,battle_rap,"battle_rap,kbk,kbk_ultimate_final,kbk_solo_champ",,,1
+519,БИГА ONE vs МИКСИ,battle_rap,"battle_rap,kbk,triplet,kbk_summer_trap",,,1
+520,ABBALBISK vs DOCTOR KAPUSTU!,battle_rap,"battle_rap,kbk,triplet,kbk_back_to_basics",,,1
+521,ЧУРДАЛЬ vs MASHA HIMA,battle_rap,"battle_rap,kbk,kbk_xx_3",,,

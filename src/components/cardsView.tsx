@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import type { ContentCard } from "@/lib/contentCards";
 import { getTagLabel } from "@/lib/tagLabels";
 import {
+  battleRapEventsByPlatform,
+  battleRapPlatformFilters,
   contentTypeColors,
   contentTypeLabels,
   contentTypeTabs,
@@ -40,6 +42,11 @@ type SearchResult = {
   card: ContentCard;
   matchStrength: SearchMatchStrength;
   matchedItems: ContentCard["items"];
+};
+
+type BattleRapFilter = {
+  platform: string;
+  event: string;
 };
 
 function normalizeSearchText(value: string): string {
@@ -109,12 +116,77 @@ function getSortableRating(searchResult: SearchResult): number | null {
   return null;
 }
 
+function tagsMatchBattleRapFilter(
+  tags: string[],
+  battleRapFilter: BattleRapFilter
+): boolean {
+  if (
+    battleRapFilter.platform !== "all" &&
+    !tags.includes(battleRapFilter.platform)
+  ) {
+    return false;
+  }
+
+  if (battleRapFilter.event !== "all" && !tags.includes(battleRapFilter.event)) {
+    return false;
+  }
+
+  return true;
+}
+
+function itemMatchesBattleRapFilter(
+  card: ContentCard,
+  item: ContentCard["items"][number],
+  battleRapFilter: BattleRapFilter
+): boolean {
+  return tagsMatchBattleRapFilter(
+    Array.from(new Set([...card.tags, ...item.tags])),
+    battleRapFilter
+  );
+}
+
+function cardMatchesBattleRapFilter(
+  card: ContentCard,
+  battleRapFilter: BattleRapFilter
+): boolean {
+  if (battleRapFilter.platform === "all" && battleRapFilter.event === "all") {
+    return true;
+  }
+
+  if (tagsMatchBattleRapFilter(card.tags, battleRapFilter)) {
+    return true;
+  }
+
+  return card.items.some((item) =>
+    itemMatchesBattleRapFilter(card, item, battleRapFilter)
+  );
+}
+
+function getBattleRapFilteredItems(
+  card: ContentCard,
+  items: ContentCard["items"],
+  battleRapFilter: BattleRapFilter
+): ContentCard["items"] {
+  if (battleRapFilter.platform === "all" && battleRapFilter.event === "all") {
+    return items;
+  }
+
+  return items.filter((item) =>
+    itemMatchesBattleRapFilter(card, item, battleRapFilter)
+  );
+}
+
 function getCardSearchStrength(
   card: ContentCard,
   query: string,
-  selectedPlatform: string
+  selectedPlatform: string,
+  battleRapFilter: BattleRapFilter
 ): SearchResult | null {
-  const platformItems = getFilteredCardItems(card, selectedPlatform);
+  const platformItems = getBattleRapFilteredItems(
+    card,
+    getFilteredCardItems(card, selectedPlatform),
+    battleRapFilter
+  );
 
   if (platformItems.length === 0) {
     return null;
@@ -167,8 +239,25 @@ export function CardsView({ cards }: Props) {
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState("all");
   const [selectedPlatform, setSelectedPlatform] = useState("all");
+  const [selectedBattleRapPlatform, setSelectedBattleRapPlatform] =
+    useState("all");
+  const [selectedBattleRapEvent, setSelectedBattleRapEvent] = useState("all");
   // const [selectedTag, setSelectedTag] = useState("all");
   const [sortBy, setSortBy] = useState("date_desc");
+
+  const activeBattleRapFilter = useMemo<BattleRapFilter>(() => {
+    if (selectedTab !== "battle_rap") {
+      return { platform: "all", event: "all" };
+    }
+
+    return {
+      platform: selectedBattleRapPlatform,
+      event: selectedBattleRapEvent,
+    };
+  }, [selectedBattleRapEvent, selectedBattleRapPlatform, selectedTab]);
+
+  const battleRapEventOptions =
+    battleRapEventsByPlatform[selectedBattleRapPlatform] ?? [];
 
     /*
   const cardsForTagFilter = useMemo(() => {
@@ -202,11 +291,20 @@ export function CardsView({ cards }: Props) {
       const matchesTab =
         selectedTab === "all" || card.contentType === selectedTab;
 
-      if (!matchesTab || !cardMatchesPlatform(card, selectedPlatform)) {
+      if (
+        !matchesTab ||
+        !cardMatchesPlatform(card, selectedPlatform) ||
+        !cardMatchesBattleRapFilter(card, activeBattleRapFilter)
+      ) {
         return acc;
       }
 
-      const searchResult = getCardSearchStrength(card, query, selectedPlatform);
+      const searchResult = getCardSearchStrength(
+        card,
+        query,
+        selectedPlatform,
+        activeBattleRapFilter
+      );
 
       if (searchResult) {
         acc.push(searchResult);
@@ -275,7 +373,7 @@ export function CardsView({ cards }: Props) {
 
       return getCardMaxDate(b.card) - getCardMaxDate(a.card);
     });
-  }, [cards, search, selectedTab, selectedPlatform, sortBy]);
+  }, [cards, search, selectedTab, selectedPlatform, activeBattleRapFilter, sortBy]);
 
   const contentStats = useMemo(() => {
     return {
@@ -341,6 +439,10 @@ export function CardsView({ cards }: Props) {
             type="button"
             onClick={() => {
               setSelectedTab(tab.value);
+              if (tab.value !== "battle_rap") {
+                setSelectedBattleRapPlatform("all");
+                setSelectedBattleRapEvent("all");
+              }
               // setSelectedTag("all");
               setOpenCardId(null);
             }}
@@ -373,11 +475,52 @@ export function CardsView({ cards }: Props) {
           }}
           className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2"
         >
-          <option value="all">Все площадки</option>
+          <option value="all">Все источники</option>
           <option value="youtube">YouTube</option>
           <option value="telegram">Telegram</option>
           <option value="boosty">Boosty</option>
         </select>
+
+        {selectedTab === "battle_rap" && (
+          <>
+            <select
+              value={selectedBattleRapPlatform}
+              onChange={(event) => {
+                setSelectedBattleRapPlatform(event.target.value);
+                setSelectedBattleRapEvent("all");
+                setOpenCardId(null);
+              }}
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2"
+            >
+              <option value="all">Все баттл-площадки</option>
+
+              {battleRapPlatformFilters.map((platform) => (
+                <option key={platform.value} value={platform.value}>
+                  {platform.label}
+                </option>
+              ))}
+            </select>
+
+            {battleRapEventOptions.length > 0 && (
+              <select
+                value={selectedBattleRapEvent}
+                onChange={(event) => {
+                  setSelectedBattleRapEvent(event.target.value);
+                  setOpenCardId(null);
+                }}
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2"
+              >
+                <option value="all">Все ивенты</option>
+
+                {battleRapEventOptions.map((eventOption) => (
+                  <option key={eventOption.value} value={eventOption.value}>
+                    {eventOption.label}
+                  </option>
+                ))}
+              </select>
+            )}
+          </>
+        )}
 
         {/*
         <select
@@ -464,6 +607,19 @@ export function CardsView({ cards }: Props) {
 
           const singleItem =
             !isWeakMatch && visibleItems.length === 1 ? visibleItems[0] : null;
+          const isBattleRapFiltered =
+            selectedTab === "battle_rap" &&
+            (activeBattleRapFilter.platform !== "all" ||
+              activeBattleRapFilter.event !== "all");
+          const displayItem =
+            isBattleRapFiltered && visibleItems.length === 1 && card.items.length > 1
+              ? visibleItems[0]
+              : null;
+          const displayTitle = displayItem?.title ?? card.title;
+          const displayDate = displayItem
+            ? displayItem.lastDate || displayItem.firstDate
+            : getCardLatestDate(card);
+          const displayTags = displayItem?.tags ?? card.tags;
 
           return (
             <div
@@ -501,17 +657,17 @@ export function CardsView({ cards }: Props) {
                                         {contentTypeLabels[card.contentType] ?? card.contentType}
                                     </span>
 
-                                    {getCardLatestDate(card) && (
+                                    {displayDate && (
                                         <span className="font-medium text-zinc-400">
-                                            Обновлено {formatDate(getCardLatestDate(card))}
+                                            Обновлено {formatDate(displayDate)}
                                         </span>
                                     )}
                                 </div>
 
-                                 <div className="mt-2">
-                                     <h2 className="text-2xl font-bold leading-tight">
-                                         {card.title}
-                                     </h2>
+                                  <div className="mt-2">
+                                      <h2 className="text-2xl font-bold leading-tight">
+                                          {displayTitle}
+                                      </h2>
 
                                      {isWeakMatch && (
                                          <div className="mt-2 text-sm text-zinc-500">
@@ -530,9 +686,9 @@ export function CardsView({ cards }: Props) {
                              )}
                         </div>
 
-                        {card.tags.length > 0 && (
+                        {displayTags.length > 0 && (
                             <div className="mt-4 flex h-[28px] flex-wrap gap-2 overflow-hidden">
-                                {card.tags.map((tag) => (
+                                {displayTags.map((tag) => (
                                     <span
                                         key={tag}
                                         className="rounded-full bg-zinc-800 px-2.5 py-1 text-xs text-zinc-300"

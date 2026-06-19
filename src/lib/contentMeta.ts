@@ -11,6 +11,12 @@ export const contentTypeLabels: Record<string, string> = {
   unknown: "Невошедшее",
 };
 
+export const ratedContentTypes = new Set(["movie", "series", "anime"]);
+
+export function isRatedContentType(contentType: string): boolean {
+  return ratedContentTypes.has(contentType);
+}
+
 export const contentTypeTabs = [
   { label: "Все", value: "all" },
   { label: "Игры", value: "game" },

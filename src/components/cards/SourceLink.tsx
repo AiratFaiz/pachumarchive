@@ -1,5 +1,5 @@
 import type { ContentSourceItem } from "@/lib/contentCards";
-import { sourceLabels } from "@/lib/contentMeta";
+import { isRatedContentType, sourceLabels } from "@/lib/contentMeta";
 import {
   formatDate,
   formatDuration,
@@ -13,6 +13,7 @@ import { ExternalLinkIcon } from "@/components/cards/CardIcons";
 export function SourceLink({ item }: { item: ContentSourceItem }) {
   const source = getItemSource(item);
   const url = getItemUrl(item);
+  const showRating = item.rating && isRatedContentType(item.contentType);
 
   return (
     <a
@@ -35,7 +36,7 @@ export function SourceLink({ item }: { item: ContentSourceItem }) {
         </div>
 
         <div className="flex shrink-0 items-center gap-4 text-sm text-zinc-400">
-          {item.rating && (
+          {showRating && (
             <span className="whitespace-nowrap rounded-full bg-zinc-800 px-2.5 py-1 font-semibold text-zinc-200">
               {formatRating(item.rating)}
             </span>

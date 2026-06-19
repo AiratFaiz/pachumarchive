@@ -7,6 +7,7 @@ import {
   contentTypeColors,
   contentTypeLabels,
   contentTypeTabs,
+  isRatedContentType,
   sortOptions,
   sourceLabels,
   sourceOrder,
@@ -372,26 +373,33 @@ export function CardsView({ cards }: Props) {
       <div className="mt-6 grid items-start gap-5 md:grid-cols-2">
         {filteredCards.map(({ card, matchStrength, matchedItems }) => {
           const visibleItems = matchedItems;
-          const itemRatings = visibleItems
+          const showCardRating = isRatedContentType(card.contentType);
+          const ratedVisibleItems = visibleItems.filter((item) =>
+            isRatedContentType(item.contentType)
+          );
+          const itemRatings = ratedVisibleItems
             .map((item) => item.rating)
             .filter(Boolean);
           const uniqueItemRatings = Array.from(new Set(itemRatings));
           const hasUniformItemRating =
-            visibleItems.length > 0 &&
-            itemRatings.length === visibleItems.length &&
+            ratedVisibleItems.length > 0 &&
+            itemRatings.length === ratedVisibleItems.length &&
             uniqueItemRatings.length === 1;
           const shouldCollapseItemRatings =
-            Boolean(card.rating) ||
-            (!card.rating &&
-              itemRatings.length > 0 &&
-              (itemRatings.length === 1 || hasUniformItemRating));
-          const ratingBadge = card.rating
+            showCardRating &&
+            (Boolean(card.rating) ||
+              (!card.rating &&
+                itemRatings.length > 0 &&
+                (itemRatings.length === 1 || hasUniformItemRating)));
+          const ratingBadge = showCardRating && card.rating
             ? formatRating(card.rating)
-            : itemRatings.length === 1 || hasUniformItemRating
-              ? formatRating(uniqueItemRatings[0])
-              : itemRatings.length > 0
-                ? `Оценки: ${itemRatings.length}`
-                : "";
+            : showCardRating
+              ? itemRatings.length === 1 || hasUniformItemRating
+                ? formatRating(uniqueItemRatings[0])
+                : itemRatings.length > 0
+                  ? `Оценки: ${itemRatings.length}`
+                  : ""
+              : "";
           const visibleCard = {
             ...card,
             items: shouldCollapseItemRatings

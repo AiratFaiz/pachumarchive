@@ -34,6 +34,8 @@ export const contentTypeTabs = [
 export const sortOptions = [
   { label: "По дате: новые сверху", value: "date_desc" },
   { label: "По дате: старые сверху", value: "date_asc" },
+  { label: "По оценке: выше", value: "rating_desc" },
+  { label: "По оценке: ниже", value: "rating_asc" },
   { label: "По названию: А → Я", value: "title_asc" },
   { label: "По названию: Я → А", value: "title_desc" },
 ];

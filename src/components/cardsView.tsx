@@ -80,6 +80,35 @@ function technicalFieldMatches(query: string, values: string[]): boolean {
   });
 }
 
+function parseNumericRating(rating: string): number | null {
+  if (!rating || rating === "-") return null;
+
+  const value = Number(rating.replace(",", "."));
+
+  return Number.isFinite(value) ? value : null;
+}
+
+function getSortableRating(searchResult: SearchResult): number | null {
+  const { card, matchedItems } = searchResult;
+
+  if (!isRatedContentType(card.contentType)) return null;
+
+  const cardRating = parseNumericRating(card.rating);
+
+  if (cardRating !== null) return cardRating;
+
+  const itemRatings = matchedItems
+    .filter((item) => isRatedContentType(item.contentType))
+    .map((item) => parseNumericRating(item.rating))
+    .filter((rating): rating is number => rating !== null);
+
+  const uniqueRatings = Array.from(new Set(itemRatings));
+
+  if (uniqueRatings.length === 1) return uniqueRatings[0];
+
+  return null;
+}
+
 function getCardSearchStrength(
   card: ContentCard,
   query: string,
@@ -226,6 +255,22 @@ export function CardsView({ cards }: Props) {
 
       if (sortBy === "date_asc") {
         return getCardMaxDate(a.card) - getCardMaxDate(b.card);
+      }
+
+      if (sortBy === "rating_asc" || sortBy === "rating_desc") {
+        const ratingA = getSortableRating(a);
+        const ratingB = getSortableRating(b);
+
+        if (ratingA !== null && ratingB === null) return -1;
+        if (ratingA === null && ratingB !== null) return 1;
+
+        if (ratingA !== null && ratingB !== null && ratingA !== ratingB) {
+          return sortBy === "rating_asc"
+            ? ratingA - ratingB
+            : ratingB - ratingA;
+        }
+
+        return getCardMaxDate(b.card) - getCardMaxDate(a.card);
       }
 
       return getCardMaxDate(b.card) - getCardMaxDate(a.card);

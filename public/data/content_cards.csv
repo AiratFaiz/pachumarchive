@@ -173,7 +173,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 172,500 дней лета (2009),movie,movie,6.5,boosty,1
 173,Адреналин (2006),movie,movie,8.5,boosty,1
 174,Адреналин: Высокое напряжение (2009),movie,movie,7,boosty,1
-175,Акулий торнадо (2013),movie,movie,10,boosty,1
+175,Акулий торнадо (2013),movie,movie,4,boosty,1
 176,Альфа Дог (2006),movie,movie,7,boosty,1
 177,Анастасия (1997),movie,movie,7.5,boosty,1
 178,Астрал (2010),movie,movie,8,boosty,1
@@ -181,7 +181,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 180,Бедные-несчастные (2023),movie,movie,8,boosty,1
 181,Без чувств (1998),movie,movie,7,boosty,1
 182,Белые цыпочки (2004),movie,movie,8,boosty,1
-183,Бёрдмэн (2014),movie,movie,90,boosty,1
+183,Бёрдмэн (2014),movie,movie,8.5,boosty,1
 184,Бесподобный мистер Фокс (2009),movie,movie,7,boosty,1
 185,Бесславные ублюдки (2009),movie,movie,9,boosty,1
 186,Бойцовский клуб (1999),movie,movie,9,boosty,1
@@ -222,7 +222,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 221,Затерянный город Z (2016),movie,movie,6.5,boosty,1
 222,Звездный десант (1997),movie,movie,7,boosty,1
 223,Звёздочки на земле (2007),movie,movie,7.5,boosty,1
-224,Зелёная миля (1999),movie,movie,10,boosty,1
+224,Зелёная миля (1999),movie,movie,9.5,boosty,1
 225,Земля вампиров (2010),movie,movie,6.5,boosty,1
 226,Зима в Простоквашино (1984),movie,movie,8,boosty,1
 227,Зомби по имени Шон (2004),movie,movie,6.5,boosty,1
@@ -332,7 +332,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 331,Приключения Паддингтона 2 (2017),movie,movie,8,boosty,1
 332,Приключения Паддингтона 3 (2024),movie,movie,6.5,boosty,1
 333,Прочь (2017),movie,movie,7.5,boosty,1
-334,Птицекалипсис: Шок и трепет (2010),movie,movie,10,boosty,1
+334,Птицекалипсис: Шок и трепет (2010),movie,movie,3.5,boosty,1
 335,Птичий короб (2018),movie,movie,7.5,boosty,1
 336,Путешествие с Жириновским (1995),movie,movie,-,,1
 337,Реквием по мечте (2000),movie,movie,9,boosty,1
@@ -365,7 +365,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 364,Тело (2012),movie,movie,8,boosty,1
 365,Титан: После гибели Земли (2000),movie,movie,5.5,boosty,1
 366,Тихое место: Азраэль (2024),movie,movie,5,boosty,1
-367,Тот самый Мюнхгаузен (1980),movie,movie,10,boosty,1
+367,Тот самый Мюнхгаузен (1980),movie,movie,7,boosty,1
 368,Трудный ребенок (1990),movie,movie,6,boosty,1
 369,Уличный кот по кличке Боб (2016),movie,movie,7,boosty,1
 370,Уличный мусор (1987),movie,movie,3,boosty,1

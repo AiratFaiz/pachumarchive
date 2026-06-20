@@ -88,6 +88,18 @@ export const battleRapEventsByPlatform: Record<
     { label: "Соло Турнир", value: "kbk_solo_champ" },
     { label: "Турнир 2х2", value: "kbk_2_2" },
   ],
+  rbl: [
+    { label: "1 сезон", value: "rbl_season_1" },
+    { label: "Межсезонье 1", value: "rbl_off_season_1" },
+    { label: "2 сезон", value: "rbl_season_2" },
+    { label: "Межсезонье 2", value: "rbl_off_season_2" },
+    { label: "3 сезон", value: "rbl_season_3" },
+    { label: "All Starts", value: "rbl_all_stars" },
+    { label: "Universe", value: "rbl_universe" },
+    { label: "Межсезонье 3", value: "rbl_off_season_3" },
+    { label: "League 1", value: "rbl_league_1" },
+    { label: "Chance", value: "rbl_chance" },
+  ],
 };
 
 export const contentTypeColors: Record<

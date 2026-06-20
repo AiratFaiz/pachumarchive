@@ -475,8 +475,8 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 474,Versus Fresh Blood 3 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
 475,Versus Fresh Blood 4 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
 476,Рвать на битах | Ретроспектива,battle_rap,"battle_rap,retro,rnb",,,1
-477,RBL Season 2 | Ретроспектива,battle_rap,"battle_rap,retro,rbl",,,1
-478,RBL1 | Ретроспектива,battle_rap,"battle_rap,retro,rbl",,,1
+477,RBL Season 2 | Ретроспектива,battle_rap,"battle_rap,retro,rbl,rbl_season_2",,,1
+478,RBL1 | Ретроспектива,battle_rap,"battle_rap,retro,rbl,rbl_season_1",,,1
 479,ProBattle | Судейство,battle_rap,"battle_rap,probattle",,,1
 480,Versus Fresh Blood 2 | Ретроспектива,battle_rap,"battle_rap,retro,fb",,,1
 481,140 BPM | Ретроспектива,battle_rap,"battle_rap,retro,140",,,1
@@ -489,7 +489,7 @@ card_id,card_title,content_type,content_tags,rating,rating_source,is_active
 488,МАЙК СТИКС x ДИКТАТОР UAV - HP-BPM,battle_rap,battle_rap,,,1
 489,KNOWNAIM x T!MM! - 17 | KHAO KYLE х TILLS - HP-BPM,battle_rap,battle_rap,,,1
 490,Рвать на битах 2,battle_rap,"battle_rap,rnb",,,1
-491,RBL UNIVERSE,battle_rap,"battle_rap,rbl",,,1
+491,RBL UNIVERSE,battle_rap,"battle_rap,rbl,rbl_universe",,,1
 492,Пила 3D (2010),movie,movie,6,telegram,1
 493,Рвать на битах: Freestyle,battle_rap,"battle_rap,rnb",,,1
 494,Рвать на битах,battle_rap,"battle_rap,rnb",,,1

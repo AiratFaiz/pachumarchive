@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ContentCard } from "@/lib/contentCards";
 import { getTagLabel } from "@/lib/tagLabels";
 import {
@@ -244,6 +244,8 @@ export function CardsView({ cards }: Props) {
   const [selectedBattleRapEvent, setSelectedBattleRapEvent] = useState("all");
   // const [selectedTag, setSelectedTag] = useState("all");
   const [sortBy, setSortBy] = useState("date_desc");
+  const cardRefs = useRef(new Map<string, HTMLDivElement>());
+  const pendingCardAnchor = useRef<{ cardId: string; top: number } | null>(null);
 
   const activeBattleRapFilter = useMemo<BattleRapFilter>(() => {
     if (selectedTab !== "battle_rap") {
@@ -258,6 +260,26 @@ export function CardsView({ cards }: Props) {
 
   const battleRapEventOptions =
     battleRapEventsByPlatform[selectedBattleRapPlatform] ?? [];
+
+  useEffect(() => {
+    if (!openCardId || pendingCardAnchor.current?.cardId !== openCardId) return;
+
+    const frame = requestAnimationFrame(() => {
+      const anchor = pendingCardAnchor.current;
+      const element = cardRefs.current.get(openCardId);
+
+      if (anchor && element) {
+        window.scrollBy({
+          top: element.getBoundingClientRect().top - anchor.top,
+          behavior: "auto",
+        });
+      }
+
+      pendingCardAnchor.current = null;
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [openCardId]);
 
     /*
   const cardsForTagFilter = useMemo(() => {
@@ -620,10 +642,21 @@ export function CardsView({ cards }: Props) {
             ? displayItem.lastDate || displayItem.firstDate
             : getCardLatestDate(card);
           const displayTags = displayItem?.tags ?? card.tags;
+          const shouldShowMatchedItemsCount =
+            !displayItem &&
+            (isWeakMatch || isBattleRapFiltered) &&
+            visibleItems.length < card.items.length;
 
           return (
             <div
                 key={card.cardId}
+                ref={(element) => {
+                  if (element) {
+                    cardRefs.current.set(card.cardId, element);
+                  } else {
+                    cardRefs.current.delete(card.cardId);
+                  }
+                }}
                 style={{ minHeight: 275 }}
                 className={`flex flex-col overflow-hidden rounded-3xl border transition ${
                     isOpen
@@ -641,6 +674,14 @@ export function CardsView({ cards }: Props) {
                             return;
                         }
 
+                        const element = cardRefs.current.get(card.cardId);
+                        pendingCardAnchor.current =
+                          !isOpen && element
+                            ? {
+                                cardId: card.cardId,
+                                top: element.getBoundingClientRect().top,
+                              }
+                            : null;
                         setOpenCardId(isOpen ? null : card.cardId);
                     }}
                     className="grid w-full shrink-0 overflow-hidden p-6 text-left"
@@ -669,11 +710,11 @@ export function CardsView({ cards }: Props) {
                                           {displayTitle}
                                       </h2>
 
-                                     {isWeakMatch && (
-                                         <div className="mt-2 text-sm text-zinc-500">
-                                             Найдено внутри: {visibleItems.length} из {card.items.length}
-                                         </div>
-                                     )}
+                                     {shouldShowMatchedItemsCount && (
+                                          <div className="mt-2 text-sm text-zinc-500">
+                                              Найдено внутри: {visibleItems.length} из {card.items.length}
+                                          </div>
+                                      )}
                                  </div>
                              </div>
 

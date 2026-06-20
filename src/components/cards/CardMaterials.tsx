@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ContentCard } from "@/lib/contentCards";
 import { sourceLabels } from "@/lib/contentMeta";
 import { groupBySource } from "@/lib/contentCardView";
@@ -9,6 +9,8 @@ import { SourceLink } from "@/components/cards/SourceLink";
 
 export function CardMaterials({ card }: { card: ContentCard }) {
   const [openSource, setOpenSource] = useState<string | null>(null);
+  const sourceRefs = useRef(new Map<string, HTMLDivElement>());
+  const pendingSourceAnchor = useRef<{ source: string; top: number } | null>(null);
 
   const grouped = groupBySource(card.items);
   const sourceEntries = Object.entries(grouped);
@@ -16,6 +18,26 @@ export function CardMaterials({ card }: { card: ContentCard }) {
   const shouldGroupBySource =
     sourceEntries.length > 1 &&
     sourceEntries.some(([, items]) => items.length > 1);
+
+  useEffect(() => {
+    if (!openSource || pendingSourceAnchor.current?.source !== openSource) return;
+
+    const frame = requestAnimationFrame(() => {
+      const anchor = pendingSourceAnchor.current;
+      const element = sourceRefs.current.get(openSource);
+
+      if (anchor && element) {
+        window.scrollBy({
+          top: element.getBoundingClientRect().top - anchor.top,
+          behavior: "auto",
+        });
+      }
+
+      pendingSourceAnchor.current = null;
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [openSource]);
 
   if (!shouldGroupBySource) {
     return (
@@ -35,11 +57,28 @@ export function CardMaterials({ card }: { card: ContentCard }) {
         return (
           <div
             key={source}
+            ref={(element) => {
+              if (element) {
+                sourceRefs.current.set(source, element);
+              } else {
+                sourceRefs.current.delete(source);
+              }
+            }}
             className="rounded-2xl border border-zinc-800 bg-zinc-950/40"
           >
             <button
               type="button"
-              onClick={() => setOpenSource(isOpen ? null : source)}
+              onClick={() => {
+                const element = sourceRefs.current.get(source);
+                pendingSourceAnchor.current =
+                  !isOpen && element
+                    ? {
+                        source,
+                        top: element.getBoundingClientRect().top,
+                      }
+                    : null;
+                setOpenSource(isOpen ? null : source);
+              }}
               className="flex w-full items-center justify-between gap-4 p-4 text-left"
             >
               <div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ContentCard } from "@/lib/contentCards";
-import { getTagLabel } from "@/lib/tagLabels";
+import { getTagLabel, isVisibleContentTag } from "@/lib/tagLabels";
 import {
   battleRapEventsByPlatform,
   battleRapPlatformFilters,
@@ -34,6 +34,7 @@ import { StatPill } from "@/components/cards/StatPill";
 
 type Props = {
   cards: ContentCard[];
+  creatorCards: ContentCard[];
 };
 
 type SearchMatchStrength = "strong" | "weak";
@@ -234,7 +235,7 @@ function getCardSearchStrength(
   };
 }
 
-export function CardsView({ cards }: Props) {
+export function CardsView({ cards, creatorCards }: Props) {
   const [openCardId, setOpenCardId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState("all");
@@ -242,6 +243,7 @@ export function CardsView({ cards }: Props) {
   const [selectedBattleRapPlatform, setSelectedBattleRapPlatform] =
     useState("all");
   const [selectedBattleRapEvent, setSelectedBattleRapEvent] = useState("all");
+  const [selectedCreatorTag, setSelectedCreatorTag] = useState("all");
   // const [selectedTag, setSelectedTag] = useState("all");
   const [sortBy, setSortBy] = useState("date_desc");
   const cardRefs = useRef(new Map<string, HTMLDivElement>());
@@ -260,6 +262,18 @@ export function CardsView({ cards }: Props) {
 
   const battleRapEventOptions =
     battleRapEventsByPlatform[selectedBattleRapPlatform] ?? [];
+
+  const creatorTagOptions = useMemo(() => {
+    const tags = new Set<string>();
+
+    creatorCards.forEach((card) => {
+      card.creatorTags?.forEach((tag) => tags.add(tag));
+    });
+
+    return Array.from(tags).sort((a, b) =>
+      getTagLabel(a).localeCompare(getTagLabel(b), "ru")
+    );
+  }, [creatorCards]);
 
   useEffect(() => {
     if (!openCardId || pendingCardAnchor.current?.cardId !== openCardId) return;
@@ -308,10 +322,14 @@ export function CardsView({ cards }: Props) {
 
   const filteredCards = useMemo(() => {
     const query = search.trim().toLowerCase();
+    const activeCards = selectedTab === "creator_content" ? creatorCards : cards;
 
-    const result = cards.reduce<SearchResult[]>((acc, card) => {
+    const result = activeCards.reduce<SearchResult[]>((acc, card) => {
       const matchesTab =
-        selectedTab === "all" || card.contentType === selectedTab;
+        selectedTab === "creator_content"
+          ? selectedCreatorTag === "all" ||
+            card.creatorTags?.includes(selectedCreatorTag)
+          : selectedTab === "all" || card.contentType === selectedTab;
 
       if (
         !matchesTab ||
@@ -395,7 +413,16 @@ export function CardsView({ cards }: Props) {
 
       return getCardMaxDate(b.card) - getCardMaxDate(a.card);
     });
-  }, [cards, search, selectedTab, selectedPlatform, activeBattleRapFilter, sortBy]);
+  }, [
+    cards,
+    creatorCards,
+    search,
+    selectedTab,
+    selectedPlatform,
+    activeBattleRapFilter,
+    selectedCreatorTag,
+    sortBy,
+  ]);
 
   const contentStats = useMemo(() => {
     return {
@@ -464,6 +491,9 @@ export function CardsView({ cards }: Props) {
               if (tab.value !== "battle_rap") {
                 setSelectedBattleRapPlatform("all");
                 setSelectedBattleRapEvent("all");
+              }
+              if (tab.value !== "creator_content") {
+                setSelectedCreatorTag("all");
               }
               // setSelectedTag("all");
               setOpenCardId(null);
@@ -544,6 +574,25 @@ export function CardsView({ cards }: Props) {
           </>
         )}
 
+        {selectedTab === "creator_content" && (
+          <select
+            value={selectedCreatorTag}
+            onChange={(event) => {
+              setSelectedCreatorTag(event.target.value);
+              setOpenCardId(null);
+            }}
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2"
+          >
+            <option value="all">Все разделы</option>
+
+            {creatorTagOptions.map((tag) => (
+              <option key={tag} value={tag}>
+                {getTagLabel(tag)}
+              </option>
+            ))}
+          </select>
+        )}
+
         {/*
         <select
           value={selectedTag}
@@ -576,9 +625,17 @@ export function CardsView({ cards }: Props) {
         </select>
       </div>
 
-      <div className="mt-4 text-sm text-zinc-500">
-        Найдено: {filteredCards.length}
-      </div>
+      {selectedTab === "creator_content" ? (
+        <div className="mt-4 max-w-4xl text-sm leading-6 text-zinc-400">
+          В разделе собраны реакции на собственные баттлы, заявки, судейство,
+          творческие стримы, игротурниры и другие материалы, связанные
+          непосредственно с Пачукой.
+        </div>
+      ) : (
+        <div className="mt-4 text-sm text-zinc-500">
+          Найдено: {filteredCards.length}
+        </div>
+      )}
 
       <div className="mt-6 grid items-start gap-5 md:grid-cols-2">
         {filteredCards.map(({ card, matchStrength, matchedItems }) => {
@@ -641,7 +698,9 @@ export function CardsView({ cards }: Props) {
           const displayDate = displayItem
             ? displayItem.lastDate || displayItem.firstDate
             : getCardLatestDate(card);
-          const displayTags = displayItem?.tags ?? card.tags;
+          const displayTags = (displayItem?.tags ?? card.tags).filter(
+            isVisibleContentTag
+          );
           const shouldShowMatchedItemsCount =
             !displayItem &&
             (isWeakMatch || isBattleRapFiltered) &&

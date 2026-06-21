@@ -1,8 +1,11 @@
-import { getContentCards } from "@/lib/contentCards";
+import { getContentCards, getCreatorCards } from "@/lib/contentCards";
 import { CardsView } from "@/components/cardsView";
 
 export default async function CardsPage() {
-  const cards = await getContentCards();
+  const [cards, creatorCards] = await Promise.all([
+    getContentCards(),
+    getCreatorCards(),
+  ]);
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-950">
@@ -15,7 +18,7 @@ export default async function CardsPage() {
           Тестовая версия карточек: один контент объединяет записи с разных площадок.
         </p>
 
-        <CardsView cards={cards} />
+        <CardsView cards={cards} creatorCards={creatorCards} />
       </div>
     </main>
   );

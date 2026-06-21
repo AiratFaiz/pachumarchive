@@ -60,6 +60,15 @@ export const tagLabels: Record<string, string> = {
     versus: "Версус",
     wed: "4 Свадьбы",
     requested: "Заказы",
+    creator_alco: "Алкостримы",
+    creator_battle_review: "Просмотр своих баттлов",
+    creator_best: "Хайлайты",
+    creator_call: "Созвоны",
+    creator_content: "Авторский контент",
+    creator_judging: "Судейства",
+    creator_release: "Заявки, треки",
+    creator_special: "Особые стримы",
+    master_of_games: "Мастер игорей",
     pens: "Пенсионеры",
     strela: "STRELASPB",
     fb: "Fresh Blood",
@@ -244,4 +253,8 @@ export const tagLabels: Record<string, string> = {
 
 export function getTagLabel(tag: string): string {
   return tagLabels[tag] ?? tag;
+}
+
+export function isVisibleContentTag(tag: string): boolean {
+  return tag.startsWith("kbk_") || tag.startsWith("rbl_");
 }

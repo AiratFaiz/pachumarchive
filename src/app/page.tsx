@@ -1,9 +1,12 @@
-import { getContentCards } from "@/lib/contentCards";
+import { getContentCards, getCreatorCards } from "@/lib/contentCards";
 import { CardsView } from "@/components/cardsView";
 import { ArchiveNotice } from "@/components/ArchiveNotice";
 
 export default async function HomePage() {
-  const cards = await getContentCards();
+  const [cards, creatorCards] = await Promise.all([
+    getContentCards(),
+    getCreatorCards(),
+  ]);
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -20,7 +23,7 @@ export default async function HomePage() {
           Полная доступная история контента в одном месте.
         </p>
 
-        <CardsView cards={cards} />
+        <CardsView cards={cards} creatorCards={creatorCards} />
       </div>
     </main>
   );

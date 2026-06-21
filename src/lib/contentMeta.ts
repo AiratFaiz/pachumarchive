@@ -4,6 +4,7 @@ export const contentTypeLabels: Record<string, string> = {
   series: "Сериал",
   anime: "Аниме",
   battle_rap: "Баттлрэп",
+  creator_content: "Авторский контент",
   music: "Музыка",
   irl: "ИРЛ",
   degrod: "Дегрод",
@@ -19,6 +20,7 @@ export function isRatedContentType(contentType: string): boolean {
 
 export const contentTypeTabs = [
   { label: "Все", value: "all" },
+  { label: "Авторский контент", value: "creator_content" },
   { label: "Игры", value: "game" },
   { label: "Фильмы", value: "movie" },
   { label: "Сериалы", value: "series" },
@@ -58,6 +60,7 @@ export const battleRapEventsByPlatform: Record<
   { label: string; value: string }[]
 > = {
   kbk: [
+    { label: "Кубок МЦ: Survival", value: "kbk_survival" },
     { label: "Reborn", value: "kbk_reborn" },
     { label: "Summer Trip", value: "kbk_summer_trip" },
     { label: "New Era", value: "kbk_new_era" },

@@ -23,6 +23,7 @@ export type ContentCard = {
   title: string;
   contentType: string;
   tags: string[];
+  creatorTags?: string[];
   rating: string;
   ratingSource: string;
   items: ContentSourceItem[];
@@ -33,6 +34,8 @@ const DATA_DIR = path.join(process.cwd(), "public", "data");
 const CONTENT_ITEMS_PATH = path.join(DATA_DIR, "content_items.csv");
 const CONTENT_CARDS_PATH = path.join(DATA_DIR, "content_cards.csv");
 const CONTENT_CARD_ITEMS_PATH = path.join(DATA_DIR, "content_card_items.csv");
+const CREATOR_CARDS_PATH = path.join(DATA_DIR, "creator_cards.csv");
+const CREATOR_CARD_ITEMS_PATH = path.join(DATA_DIR, "creator_card_items.csv");
 const VISIBLE_UNKNOWN_TAG = "gustav";
 
 async function readCsv(pathToFile: string): Promise<Record<string, string>[]> {
@@ -96,16 +99,10 @@ function sortItemsInsideCard(items: ContentSourceItem[]): ContentSourceItem[] {
   });
 }
 
-export async function getContentCards(): Promise<ContentCard[]> {
-  const [itemsRows, cardsRows, linksRows] = await Promise.all([
-    readCsv(CONTENT_ITEMS_PATH),
-    readCsv(CONTENT_CARDS_PATH),
-    readCsv(CONTENT_CARD_ITEMS_PATH),
-  ]);
-
+function buildItemsById(rows: Record<string, string>[]): Map<string, ContentSourceItem> {
   const itemsById = new Map<string, ContentSourceItem>();
 
-  itemsRows.forEach((row) => {
+  rows.forEach((row) => {
     if (!row.content_id) return;
 
     itemsById.set(row.content_id, {
@@ -125,18 +122,47 @@ export async function getContentCards(): Promise<ContentCard[]> {
     });
   });
 
+  return itemsById;
+}
+
+function buildLinksByCardId(
+  rows: Record<string, string>[],
+  cardIdField: string
+): Map<string, Record<string, string>[]> {
+  const linksByCardId = new Map<string, Record<string, string>[]>();
+
+  rows.forEach((link) => {
+    const cardId = link[cardIdField];
+
+    if (!cardId) return;
+
+    const links = linksByCardId.get(cardId) ?? [];
+    links.push(link);
+    linksByCardId.set(cardId, links);
+  });
+
+  return linksByCardId;
+}
+
+export async function getContentCards(): Promise<ContentCard[]> {
+  const [itemsRows, cardsRows, linksRows] = await Promise.all([
+    readCsv(CONTENT_ITEMS_PATH),
+    readCsv(CONTENT_CARDS_PATH),
+    readCsv(CONTENT_CARD_ITEMS_PATH),
+  ]);
+
+  const itemsById = buildItemsById(itemsRows);
+  const linksByCardId = buildLinksByCardId(linksRows, "card_id");
+
   const linkedContentIds = new Set<string>();
 
   const realCards: ContentCard[] = cardsRows
     .filter((card) => card.card_id && card.card_title)
     .filter((card) => card.is_active !== "0")
     .map((card) => {
-      const cardLinks = linksRows
-        .filter((link) => link.card_id === card.card_id)
-        .sort(
-          (a, b) =>
-            getSortOrder(a.sort_order) - getSortOrder(b.sort_order)
-        );
+      const cardLinks = (linksByCardId.get(card.card_id) ?? []).sort(
+        (a, b) => getSortOrder(a.sort_order) - getSortOrder(b.sort_order)
+      );
 
       const linkedItems = cardLinks
         .map((link) => {
@@ -180,4 +206,49 @@ export async function getContentCards(): Promise<ContentCard[]> {
   return [...realCards, ...singleItemCards].filter(isVisibleCard).sort(
     (a, b) => getCardMaxDate(b) - getCardMaxDate(a)
   );
+}
+
+export async function getCreatorCards(): Promise<ContentCard[]> {
+  const [itemsRows, cardsRows, linksRows] = await Promise.all([
+    readCsv(CONTENT_ITEMS_PATH),
+    readCsv(CREATOR_CARDS_PATH),
+    readCsv(CREATOR_CARD_ITEMS_PATH),
+  ]);
+
+  const itemsById = buildItemsById(itemsRows);
+  const linksByCardId = buildLinksByCardId(linksRows, "creator_card_id");
+
+  return cardsRows
+    .filter((card) => card.creator_card_id && card.card_title)
+    .filter((card) => card.is_active !== "0")
+    .map((card) => {
+      const linkedItems = (linksByCardId.get(card.creator_card_id) ?? [])
+        .map((link) => {
+          const item = itemsById.get(link.content_id);
+
+          if (!item) return null;
+
+          return {
+            ...item,
+            sortOrder: getSortOrder(link.sort_order),
+          };
+        })
+        .filter(Boolean) as ContentSourceItem[];
+
+      const creatorTags = parseTags(card.creator_tags);
+      const contentTags = parseTags(card.content_tags);
+
+      return {
+        cardId: `creator-${card.creator_card_id}`,
+        title: card.card_title,
+        contentType: card.content_type ?? "",
+        tags: [...creatorTags, ...contentTags],
+        creatorTags,
+        rating: "",
+        ratingSource: "",
+        items: sortItemsInsideCard(linkedItems),
+      };
+    })
+    .filter((card) => card.items.length > 0)
+    .sort((a, b) => getCardMaxDate(b) - getCardMaxDate(a));
 }

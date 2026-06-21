@@ -1,0 +1,59 @@
+creator_card_id,card_title,content_type,creator_tags,content_tags,sort_order,is_active
+cc_001,ПАЧУКА - ЗАЯВКА НА 140 BPM CUP 3 (СЕРЕЖА СОТНИКОВ ТВОРЕЦ DISS),battle_rap,creator_release,"140,battle_rap",,1
+cc_002,PUNCH TIME: SECTOR х ПАЧУКА,battle_rap,creator_battle_review,"battle_rap,bcb,strela",,1
+cc_003,КРИПЛ vs РОНАЛДУ vs Ж*ПА vs МАЛФОЙ vs ЗОЛОТАЯ РЫБКА - ТРИПЛЕТ: РОЛЕВОЙ,battle_rap,creator_battle_review,"battle_rap,br_main,triplet,kbk,kbk_back_to_basics",,1
+cc_004,ПАЧУКА КРИНЖУЕТ СО СВОЕГО БАТТЛА С КЕРАМБИТОМ СПУСТЯ 5 ЛЕТ,battle_rap,creator_battle_review,"battle_rap,slovo",,1
+cc_005,ГАРИК ОГАНИСЯН & ЖАБА АРКАДЬЕВНА x ПАЧУКА & ТОТ САМЫЙ,battle_rap,creator_battle_review,"battle_rap,drago,versus,kbk,kbk_generation",,1
+cc_006,СУДЕЙСТВО БЧР (БОЛЬШЕ ЧЕМ РЭП),battle_rap,creator_judging,"battle_rap,fb,retro",,1
+cc_007,созвон с Вальчинским и Игорем,game,creator_call,"battle_rap,game,requested,videos,tanakaboss",,1
+cc_008,"Конференция - Кубок МЦ: Задень до баттла (Raybax, Пачука, Шумм и др.)",battle_rap,creator_battle_review,"battle_rap,kbk",,1
+cc_009,ИРЕН х ПАЧУКА - КУБОК МЦ,battle_rap,creator_battle_review,"battle_rap,kbk,kbk_13",,1
+cc_010,ABBALBISK x ПАЧУКА x HALLOWEEN x ГОРОШКО x МАСТЯК x ИЗТОЛПЫ | КУБОК МЦ: DEATHMATCH,battle_rap,creator_battle_review,"battle_rap,kbk,kbk_karma",,1
+cc_011,Гузельский бэкстейдж (Кубок МЦ: Х),videos,creator_battle_review,"battle_rap,kbk,videos",,1
+cc_012,"ПАЧУКА ПРО СЪЁМКИ ""CYPHER: REBORN 2 - КУБОК МЦ"" | РЕАКЦИЯ",videos,creator_release,"battle_rap,kbk,videos",,1
+cc_013,ТРЕТЬЯ ЛИГА - СУДЕЙСТВО,battle_rap,creator_judging,"battle_rap,rbl,zlovo,rbl_universe",,1
+cc_014,"ПАЧУКА, КЕРАМБИТ, БОЗОН ХИГГСА",battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_015,TRUE FRICK х ПАЧУКА ,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_016,ПАЧУКА vs. ЗЛАЯ ЭЛВИ | SLOVO MOSCOW 3,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_017,ПАЧУКА vs. TVOIGREH | SLOVO MOSCOW 3,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_018,ПАЧУКА  vs. СКРЭПЕР | SLOVO MOSCOW 3,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_019,ГНОЙНЫЙ х ФАЛЛЕН МС vs. НАРЕК х ПАЧУКА | SLOVO MOSCOW 3,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_020,КЕРАМБИТ х ПАЧУКА - SLOVO MOSCOW 4,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_021,КАТРОВАСЕР х ПАЧУКА | SLOVO MOSCOW 4,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_022,ПАЧУКА х КОСНАРТ - ФИНАЛ SLOVO MOSCOW 4 СЕЗОН,battle_rap,creator_battle_review,"battle_rap,retro,slovo",,1
+cc_023,ЗАЯВКА НА SLOVO MOSCOW III ПАЧУКА,battle_rap,creator_release,"battle_rap,slovo",,1
+cc_024,ПАЧУКА - Заявка на SLOVO MOSCOW 4,battle_rap,creator_release,"battle_rap,slovo",,1
+cc_025,ОЧЕРЕДНОЙ КАРТАВЫЙ х ПАЧУКА - SLOVO,battle_rap,creator_battle_review,"battle_rap,slovo",,1
+cc_026,ХХОС ПРОТИВ ВСЕХ | КУБОК МЦ: X ,battle_rap,creator_battle_review,"battle_rap,kbk",,1
+cc_027,ПАЧУКА - Заявка на Versus Fresh Blood 4: Война Стилей,battle_rap,creator_release,"battle_rap,versus",,1
+cc_028,ПАЧУКА - ДИСС НА РИФМАБЕСА (R1FMABES DISS),music,creator_release,"battle_rap,videos",,1
+cc_029,ПАЧУКА В ШОКЕ С РЕАКЦИИ ИРЕН И ЭЛЬ МЭДА НА СВОЮ РЕАКЦИЮ НА ИХ РАУНДЫ,videos,creator_special,"battle_rap,videos",,1
+cc_030,Бадибежная эльмедкиных в двух частях by Юлик Харьковский,videos,creator_special,"battle_rap,videos",,1
+cc_031,"Аудиокнига ""Баттлбист"". Часть 1.",videos,creator_special,"battle_rap,videos",,1
+cc_032,Художественный стрим #1,videos,creator_special,"bd,videos",,1
+cc_033,Школьное видео из 2007 года + впечатления о Кубке + др,videos,creator_special,"bd,videos",,1
+cc_034,ХАЙЛАЙТЫ 2025 ГОДА,videos,creator_best,"requested,videos",,1
+cc_035,НОВОГОДНЕЕ ОБРАЩЕНИЕ ПАЧУКИ | ИТОГИ И ХАЙЛАЙТЫ 2021 ГОДА,videos,creator_best,videos,,1
+cc_036,ХАЙЛАЙТЫ 2022 ГОДА,videos,creator_best,videos,,1
+cc_037,ПАЧУКА СМОТРИТ СВОИ ПЕРВЫЕ СТРИМЫ И ИГРОВЫЕ НАРЕЗКИ,videos,creator_best,videos,,1
+cc_038,ХАЙЛАЙТЫ 2023 ГОДА,videos,creator_best,videos,,1
+cc_039,ХАЙЛАЙТЫ 2024 ГОДА,videos,creator_best,videos,,1
+cc_046,Секретный стрим по Elden Ring (алко хохотач),videos,creator_alco,videos,,1
+cc_047,24 ЧАСА ,videos,creator_special,"cs,degrod,game,m_zh,movie,24h",,1
+cc_048,ПАЧУКА УЧИТСЯ БИТБОКСУ И ЗАПИСЫВАЕТ КУРИНЫЙ ХИТ,videos,creator_special,"degrod,videos",,1
+cc_049,ПАЧУКА СИЯЕТ НА ТУРНИРЕ ПО GOD OF WAR (ХАРДКОР) | МАСТЕР ИГОРЕЙ,game,master_of_games,"game,gow",,1
+cc_050,ЛУЧШИЕ ИСПУГИ ПАЧУКИ,videos,creator_special,"game,outlast,outlast2,re2,re7,tbi,videos",,1
+cc_051,Мастер Игорей по The Last of Us,game,master_of_games,"game,tlou",,1
+cc_052,Пачука выбирает 8го Пенсионера,videos,creator_special,"pens,videos",,1
+cc_053,ПАЧУКА ВЫБИРАЕТ ЛУЧШУЮ ЛИЧНОСТЬ СТРИМЕРА PAPAPACHUCA (ТЕСТ),videos,creator_special,"quiz,videos",,1
+cc_054,"Созвон с МЦ Похоронилом и 2х0,5",videos,creator_call,videos,,1
+cc_055,АЛКОСТРИМ HEAVY RAIN | ПАЧУКА НАКИДАЛСЯ КАК НИКОГДА,videos,creator_alco,videos,,1
+cc_056,Пачука - В чистом поле васильки (Official video),videos,creator_release,videos,,1
+cc_057,"GUZELKA GAMES TRAILER (ТРЕЙЛЕР КАНАЛА) - СТРИМЫ, КОТОРЫЕ РАЗНЕСУТ ТВОЮ КИБИТКУ",videos,creator_special,videos,,1
+cc_059,"""Натальная карта"" с Харламовым, донат в 100к, гадание подписчикам, денежная вода.",videos,creator_special,videos,,1
+cc_061,Первый гузельский стрим-концерт,videos,creator_special,videos,,1
+cc_062,Свадьба Пачума и Маши,videos,creator_special,videos,,1
+cc_063,Годовщина стримера. Просмотр старых стримов.,videos,creator_special,videos,,1
+cc_064,Положняки (Бусти),videos,creator_special,polozh,,1
+cc_065,ProBattle | Судейство,battle_rap,creator_judging,"battle_rap,probattle",,1
+cc_066,ПАЧУКА х ЮЛЯ KIWI,battle_rap,creator_battle_review,"battle_rap,retro,kbk,kbk_reborn",,

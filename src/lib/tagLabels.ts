@@ -65,7 +65,7 @@ export const tagLabels: Record<string, string> = {
     creator_best: "Хайлайты",
     creator_call: "Созвоны",
     creator_content: "Авторский контент",
-    creator_judging: "Судейства",
+    creator_judging: "Онлайн судейства",
     creator_release: "Заявки, треки",
     creator_special: "Особые стримы",
     master_of_games: "Мастер игорей",
